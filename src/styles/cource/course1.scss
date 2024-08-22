@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+
+  .left {
+    position: relative;
+    width: calc(100vw - 197px - 200px);
+
+    .highlight {
+      position: relative;
+    }
+
+    .content-container {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      .content-box {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .jiaohu-box {
+        width: 90%;
+        border-top: 1px solid #daecf6;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    width: 20%;
+
+    .tip-container {
+      z-index: -10;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      width: 20%;
+      height: 100vh;
+      border-top: 2px solid #daecf6;
+      border-left: 2px solid #daecf6;
+      p {
+        color: #409eff;
+      }
+    }
+  }
+}

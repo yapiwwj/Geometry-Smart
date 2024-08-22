@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>视频共享</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      video {
+        width: 100%;
+      }
+      button {
+        padding: 5px 10px;
+        border-radius: 8px;
+        color: rgb(64, 158, 255);
+        background: #fff;
+        border: rgb(64, 158, 255) 1px solid;
+        cursor: pointer;
+      }
+      .camera-video {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        width: 200px;
+        height: auto;
+        border: 2px solid #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start">开始共享</button>
+    <button id="switch">切换共享桌面</button>
+    <video id="localVideo" autoplay muted></video>
+    <video id="cameraVideo" autoplay playsinline class="camera-video"></video>
+    <script>
+      const ws = new WebSocket('ws://121.40.154.188:10002/ws')
+      const token = localStorage.getItem('token')
+      let selectedToken = token
+      let localStream, cameraStream
+      let peerConnection
+      const configuration = {
+        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+      }
+
+      ws.onopen = () => {
+        console.log('WebSocket 连接已打开')
+      }
+
+      ws.onmessage = async (event) => {
+        const message = JSON.parse(event.data)
+        console.log('收到消息:', message)
+
+        if (message.type === 'ice-candidate') {
+          await peerConnection.addIceCandidate(new RTCIceCandidate(message.candidate))
+        } else if (message.type === 'answer') {
+          await peerConnection.setRemoteDescription(new RTCSessionDescription(message))
+        }
+      }
+
+      ws.onclose = () => {
+        console.log('WebSocket 连接已关闭')
+      }
+
+      document.getElementById('start').onclick = async () => {
+        ws.send(selectedToken)
+        console.log('发送 token:', selectedToken)
+
+        localStream = await navigator.mediaDevices.getDisplayMedia({
+          video: true
+        })
+        document.getElementById('localVideo').srcObject = localStream
+
+        peerConnection = new RTCPeerConnection(configuration)
+        localStream.getTracks().forEach((track) => peerConnection.addTrack(track, localStream))
+        cameraVideo
+
+        cameraStream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true
+        })
+        document.getElementById('cameraVideo').srcObject = cameraStream
+        cameraStream.getTracks().forEach((track) => localStream.addTrack(track, cameraStream))
+
+        peerConnection.onicecandidate = (event) => {
+          if (event.candidate) {
+            setTimeout(() => {
+              ws.send(
+                JSON.stringify({
+                  type: 'ice-candidate',
+                  candidate: event.candidate
+                })
+              )
+              console.log('发送 ICE 候选者')
+            }, 500) // 添加延迟
+          }
+        }
+
+        const offer = await peerConnection.createOffer()
+        await peerConnection.setLocalDescription(offer)
+
+        // 确保 ICE 候选者先发送
+        setTimeout(() => {
+          ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }))
+          console.log('发送 Offer')
+        }, 1000)
+      }
+
+      document.getElementById('switch').onclick = async () => {
+        localStream = await navigator.mediaDevices.getDisplayMedia({
+          video: true
+        })
+        document.getElementById('localVideo').srcObject = localStream
+
+        const senders = peerConnection.getSenders()
+        senders.forEach((sender) => {
+          if (sender.track.kind === 'video') {
+            sender.replaceTrack(localStream.getVideoTracks()[0])
+          }
+        })
+
+        const offer = await peerConnection.createOffer()
+        await peerConnection.setLocalDescription(offer)
+        ws.send(JSON.stringify({ type: 'offer', sdp: offer.sdp }))
+        console.log('发送新的 Offer')
+      }
+    </script>
+  </body>
+</html>

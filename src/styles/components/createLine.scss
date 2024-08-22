@@ -1,0 +1,41 @@
+* {
+  list-style: none;
+}
+
+#app {
+  position: relative;
+
+  ul {
+    li {
+      position: relative;
+
+      .el-button {
+        position: absolute;
+        top: calc(var(--position) * 40px);
+        left: 10px;
+        border-radius: 8px;
+        margin: 0;
+      }
+    }
+
+    .upload {
+      position: absolute;
+      top: 240px;
+      cursor: pointer;
+
+      .import-button-box {
+        width: 100px;
+        height: 32px;
+        overflow: hidden;
+        input {
+          position: absolute;
+          top: 0;
+          left: 10px;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

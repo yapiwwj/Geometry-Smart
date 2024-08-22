@@ -1,0 +1,81 @@
+h1 {
+  font-size: $base-login-size;
+  font-weight: 500;
+  margin: 50px 0 10px 0;
+}
+
+p {
+  span {
+    font-size: $base-normal-font-size;
+  }
+  span:nth-child(2) {
+    color: #87afff;
+    cursor: pointer;
+  }
+}
+
+.left {
+  border-right: 1px solid #d9d9d9;
+
+  li {
+    margin: 0 50px 10px 20px;
+
+    p {
+      font-size: $base-normal-font-size;
+      color: #a8abb2;
+      padding-top: 10px;
+    }
+
+    input {
+      width: 70%;
+      font-size: $base-normal-font-size;
+      border: none;
+      border-bottom: 1px solid #c8cace;
+      background: transparent;
+      padding: 5px 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  li:nth-child(4) {
+    margin: 20px 0 20px 20px;
+
+    .button {
+      border: 1px solid #70b6ff;
+      padding: 0 30px;
+    }
+  }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //align-items: center;
+  border-left: 1px solid #d9d9d9;
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //justify-content: space-between;
+    margin: 10px 0 0 120px;
+    width: 300px;
+    .button {
+      padding: 20px 30px;
+      img {
+        width: 30px;
+        padding-right: 20px;
+      }
+    }
+  }
+}
+
+ul {
+  width: 50%;
+  list-style: none;
+  margin-top: 30px;
+}

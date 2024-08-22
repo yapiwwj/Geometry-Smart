@@ -1,0 +1,36 @@
+.box1 {
+  display: flex;
+  align-items: center;
+  color: #888888;
+
+  .progress1 {
+    width: 85%;
+    margin-left: 20px;
+  }
+}
+
+.box2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+
+  span {
+    margin-right: 10px;
+  }
+
+  .progress2 {
+    width: 75%;
+  }
+
+  .detail {
+    all: initial;
+    display: flex;
+    align-items: center;
+
+    span {
+      all: initial;
+      color: #626c89;
+    }
+  }
+}

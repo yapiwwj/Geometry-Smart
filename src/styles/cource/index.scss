@@ -1,0 +1,47 @@
+* ul {
+  padding: 0;
+  list-style: none;
+}
+
+.el-tooltip__popper {
+  white-space: pre-line; /* 保证长文本显示换行 */
+}
+
+.el-aside {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  border-right: 2px solid #daecf6;
+  ul {
+    li {
+      padding: 10px;
+      cursor: pointer;
+    }
+    .onlineClass {
+      display: flex;
+      padding: 20px 10px;
+      .el-icon {
+        padding-right: 10px;
+      }
+    }
+    .test {
+      display: flex;
+      padding: 0 10px;
+      .el-icon {
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+.el-main {
+  position: absolute;
+  left: 200px;
+  right: 0;
+  top: $base-tabbar-height;
+  bottom: 0;
+  overflow-y: scroll;
+  padding: 0;
+}

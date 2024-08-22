@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>用户页面</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    button {
+      padding: 5px 10px;
+      border-radius: 8px;
+      color: rgb(64, 158, 255);
+      background: #fff;
+      border: rgb(64, 158, 255) 1px solid;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <button id="start">开始连接</button>
+    <video id="remoteVideo" autoplay></video>
+    <script>
+      const ws = new WebSocket('ws://121.40.154.188:10002/ws')
+      const token = localStorage.getItem('token')
+      let selectedToken = token
+      let peerConnection
+      const configuration = {
+        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+      }
+
+      ws.onopen = () => {
+        console.log('WebSocket 连接已打开')
+      }
+
+      ws.onmessage = async (event) => {
+        const message = JSON.parse(event.data)
+        console.log('收到消息:', message)
+
+        if (message.type === 'ice-candidate') {
+          if (peerConnection.remoteDescription) {
+            await peerConnection.addIceCandidate(new RTCIceCandidate(message.candidate))
+          } else {
+            console.log('远程描述未设置，无法添加 ICE 候选者')
+          }
+        } else if (message.type === 'offer') {
+          await peerConnection.setRemoteDescription(new RTCSessionDescription(message))
+          const answer = await peerConnection.createAnswer()
+          await peerConnection.setLocalDescription(answer)
+          ws.send(JSON.stringify({ type: 'answer', sdp: answer.sdp }))
+          console.log('发送 Answer')
+        }
+      }
+
+      ws.onclose = () => {
+        console.log('WebSocket 连接已关闭')
+      }
+
+      document.getElementById('start').onclick = () => {
+        ws.send(selectedToken)
+        console.log('发送 token:', selectedToken)
+
+        peerConnection = new RTCPeerConnection(configuration)
+
+        peerConnection.onicecandidate = (event) => {
+          if (event.candidate) {
+            setTimeout(() => {
+              ws.send(
+                JSON.stringify({
+                  type: 'ice-candidate',
+                  candidate: event.candidate
+                })
+              )
+              console.log('发送 ICE 候选者')
+            }, 500) // 添加延迟
+          }
+        }
+
+        peerConnection.ontrack = (event) => {
+          document.getElementById('remoteVideo').srcObject = event.streams[0]
+        }
+      }
+    </script>
+  </body>
+</html>

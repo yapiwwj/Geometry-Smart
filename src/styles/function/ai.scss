@@ -1,0 +1,242 @@
+* ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    font-size: $base-normal-font-size;
+  }
+}
+
+.ai-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: calc(100% - 50px);
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    border-radius: 16px;
+
+    li {
+      background: #fff;
+      border-radius: 16px;
+      height: 100%;
+      margin: 20px 0;
+    }
+  }
+
+  .left {
+    width: 70%;
+    margin-right: 10px;
+
+    li {
+      position: relative;
+
+      .scrollbar {
+        height: 600px;
+
+        .gpt {
+          display: flex;
+          justify-content: flex-start;
+
+          i {
+            display: flex;
+            justify-content: flex-start;
+
+            .avatar {
+              margin-left: 10px;
+            }
+
+            .text {
+              display: inline;
+              width: 70%;
+              background: #daecf6;
+              border-radius: 16px;
+              padding: 10px;
+              margin-left: 10px;
+            }
+          }
+        }
+
+        .user {
+          display: flex;
+          justify-content: flex-end;
+
+          i {
+            display: flex;
+            justify-content: flex-end;
+
+            .avatar {
+              margin-right: 10px;
+            }
+
+            .text {
+              display: inline;
+              width: 70%;
+              background: #70b6ff;
+              border-radius: 16px;
+              padding: 10px;
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .gpt,
+        .user {
+          i:nth-child(1) {
+            margin-top: 20px;
+          }
+
+          i {
+            display: flex;
+
+            .avatar {
+              img {
+                width: 30px;
+                background: #daecf6;
+                border-radius: 90px;
+              }
+            }
+          }
+        }
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 65px;
+        width: 100%;
+        margin: 0 auto;
+
+        .top {
+          display: flex;
+
+          li {
+            background: #d1ffe6;
+            border-radius: 32px;
+            padding: 10px 20px;
+            margin: 10px 15px;
+            cursor: pointer;
+          }
+        }
+
+        .bottom {
+          position: absolute;
+          left: 50%;
+          width: calc(100% - 55px);
+          background: #daecf6;
+          border-radius: 32px;
+          padding: 0 10px;
+          transform: translate(-50%);
+
+          li {
+            display: flex;
+            justify-content: space-between;
+            background: transparent;
+            margin: 10px 0;
+
+            .left-part {
+              display: flex;
+              align-items: center;
+              width: calc(100% - 50px);
+
+              img {
+                width: 35px;
+              }
+
+              .textarea {
+                padding-left: 10px;
+                resize: none;
+              }
+            }
+
+            .right-part {
+              padding-right: 10px;
+
+              img {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .right {
+    margin-left: 10px;
+    width: 40%;
+
+    li:nth-child(1) {
+      margin-bottom: 0;
+      height: 35%;
+    }
+
+    li {
+      p {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px;
+      }
+
+      .recommend-question-list {
+        width: 90%;
+        margin: 0 auto;
+
+        li {
+          background: #d1ffe6;
+          border-radius: 16px;
+          padding: 10px;
+          margin: 10px 0;
+          cursor: pointer;
+
+          .typebox {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+
+            img {
+              position: absolute;
+              bottom: 0;
+              right: 50px;
+            }
+
+            span {
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              color: #87a595;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.three-model {
+  position: relative;
+  iframe {
+    width: 100%;
+    height: 85%;
+  }
+  .el-icon {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+  }
+}
+.el-drawer {
+  .el-drawer__body {
+    padding: 0 !important;
+    iframe {
+      width: 100%;
+      height: 90%;
+    }
+  }
+}

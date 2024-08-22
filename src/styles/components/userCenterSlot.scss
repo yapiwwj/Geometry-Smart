@@ -1,0 +1,32 @@
+* ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    font-size: $base-normal-font-size;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      color: #626c89;
+      font-size: $base-normal-font-size;
+    }
+  }
+}
+
+ul {
+  display: flex;
+  align-items: end;
+  width: 100%;
+}

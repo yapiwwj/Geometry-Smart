@@ -1,0 +1,29 @@
+.qusetion-container{
+  width: 90%;
+  margin: 20px auto;
+  h3{
+    padding: 10px 0;
+    border-top: 1px solid #daecf6;
+  }
+  .question-body{
+    padding: 10px 0;
+    .question{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .select{
+        padding: 10px 0;
+        input{
+          //accent-color: #409eff;
+          margin: 0 5px 0 20px;
+        }
+      }
+    }
+  }
+
+}
+.error{
+  input{
+    accent-color: red;
+  }
+}

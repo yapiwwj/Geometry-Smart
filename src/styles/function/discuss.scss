@@ -1,0 +1,229 @@
+* ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    font-size: $base-normal-font-size;
+  }
+}
+
+.ai-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: calc(100% - 50px);
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    border-radius: 16px;
+
+    li {
+      background: #fff;
+      border-radius: 16px;
+      height: 100%;
+      margin: 20px 0;
+    }
+
+    .range {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+
+  .left {
+    width: 70%;
+    margin-right: 10px;
+
+    li {
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .input-box {
+          display: flex;
+          align-items: center;
+          position: relative;
+          width: 45%;
+          margin: 10px 0 10px 0;
+
+          input {
+            width: 100%;
+            border-radius: 16px;
+            border: 2px solid #daecf6;
+            padding: 10px;
+
+            &:focus {
+              border: 2px solid #409eff;
+              outline: none;
+            }
+          }
+
+          img {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+          }
+        }
+
+        .select-box {
+        }
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+
+        .button-box {
+          background: #daecf6;
+          padding: 5px 0;
+          border-radius: 16px;
+
+          span {
+            font-size: $base-normal-font-size;
+            border-radius: 16px;
+            padding: 2px 5px;
+            margin: 0 5px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .content-box {
+      }
+
+      .pagination-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .right {
+    margin-left: 10px;
+    width: 30%;
+
+    .range {
+      width: 95%;
+      margin: 0 auto;
+    }
+
+    li:nth-child(1) {
+      display: flex;
+      height: 8%;
+
+      .flex {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 50px;
+          cursor: pointer;
+        }
+
+        span {
+          font-size: 16px;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    li:nth-child(2) {
+      position: relative;
+      height: 90%;
+      margin-top: 0;
+
+      p {
+        font-weight: 550;
+        margin: 20px 0;
+      }
+
+      .publish-content {
+        position: relative;
+        height: 55vh;
+        border: 2px solid #daecf6;
+        border-radius: 16px;
+
+        .top {
+          margin: 10px 20px;
+
+          input {
+            width: 100%;
+            color: #838383;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 10px 0;
+
+            &:focus {
+              border: none;
+              outline: none;
+              cursor: auto;
+            }
+
+            &::placeholder {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .bottom {
+          margin: 10px 20px;
+
+          textarea {
+            width: 100%;
+            resize: none;
+            font-size: 14px;
+            color: #838383;
+            border: none;
+            cursor: pointer;
+
+            &:focus {
+              outline: none;
+              cursor: auto;
+            }
+
+            &::placeholder {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .footer {
+          position: absolute;
+          right: 10px;
+          bottom: 0;
+
+          img {
+            width: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .footer {
+        position: absolute;
+        right: 10px;
+
+        button {
+          color: #fff;
+          background: #008545;
+          border: none;
+          border-radius: 16px;
+          padding: 10px 30px;
+          margin-top: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  background: #fff;
+}

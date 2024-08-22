@@ -1,0 +1,14 @@
+ul {
+  z-index: 10;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  width: calc(100% - calc(100% - 200px) * 0.2 - 190px);
+  background: #ffffff;
+  border-top: 2px solid #daecf6;
+  border-bottom: 2px solid #daecf6;
+  li {
+    padding: 1.5px;
+  }
+}
