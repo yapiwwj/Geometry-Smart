@@ -10,8 +10,13 @@
         />
       </div>
       <div class="content-container">
+        <div class="pdf-box">
+          <li><h3>知识点讲解</h3></li>
+          <iframe src="/pdf/6.pdf" frameborder="0"></iframe>
+        </div>
         <div class="content-box">
-          <li style="list-style: circle"><h3>知识点</h3></li>
+
+          <li style="list-style: circle"><h3>知识点总结</h3></li>
           &emsp;
           <div
               id="contentHTML"

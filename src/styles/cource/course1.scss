@@ -2,43 +2,70 @@
   margin: 0;
   padding: 0;
 }
-
 ul {
   display: flex;
   justify-content: space-between;
   list-style: none;
-
   .left {
     position: relative;
     width: calc(100vw - 197px - 200px);
-
     .highlight {
       position: relative;
     }
-
     .content-container {
       position: absolute;
       top: 40px;
       left: 0;
       width: 100%;
+      .pdf-box {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        li {
+          list-style: circle;
+          width: 95%;
+          margin: 0 auto;
+          padding-bottom: 20px;
+        }
+        iframe {
+          width: 100%;
+          height: 100vh;
+        }
+      }
       .content-box {
         width: 90%;
         margin: 0 auto;
         padding: 20px;
       }
-
       .jiaohu-box {
         width: 90%;
         border-top: 1px solid #daecf6;
         margin: 0 auto;
+        padding: 20px;
+        ul {
+          li {
+            list-style: circle;
+            width: 100%;
+          }
+        }
+      }
+      .question-box {
+        width: 90%;
+        border-top: 1px solid #daecf6;
+        margin: 0 auto;
+        padding: 20px;
+        ul {
+          li {
+            list-style: circle;
+            width: 100%;
+          }
+        }
       }
     }
   }
-
   .right {
     position: relative;
     width: 20%;
-
     .tip-container {
       z-index: -10;
       position: fixed;

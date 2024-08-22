@@ -8,6 +8,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import '@/styles/index.scss'
 import 'virtual:svg-icons-register'
 import globalComponent from '@/components/index'
+import * as echarts from "echarts";
 // import mathjax from '@/utils/mathjax'
 
 const app = createApp(App)
@@ -21,4 +22,5 @@ pinia.use(piniaPluginPersistedstate)
 app.use(pinia)
 app.use(router)
 app.use(globalComponent)
+app.config.globalProperties.$echarts = echarts
 app.mount('#app')

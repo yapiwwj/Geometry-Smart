@@ -10,6 +10,10 @@
         />
       </div>
       <div class="content-container">
+        <div class="pdf-box">
+          <li><h3>知识点讲解</h3></li>
+          <iframe src="/pdf/1.pdf" frameborder="0"></iframe>
+        </div>
         <div class="content-box">
           <li style="list-style: circle"><h3>知识点</h3></li>
           &emsp;
@@ -36,11 +40,14 @@
 
         <div class="jiaohu-box">
           <ul>
-            <li style="list-style: circle"><h3>知识交互</h3></li>
+            <li><h3>知识交互</h3></li>
           </ul>
           <course1-cube />
         </div>
         <div class="question-box">
+          <ul>
+            <li><h3>知识小测</h3></li>
+          </ul>
           <question1 :question="questionList" :done="doneValue" :id="contentId" />
         </div>
       </div>

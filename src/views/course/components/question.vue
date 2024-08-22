@@ -76,9 +76,6 @@ onMounted(() => {
 <template>
   <div class="qusetion-container">
     <ul>
-      <li>
-        <h3>知识小测</h3>
-      </li>
       <li class="question-body" style="list-style: none" v-for="i in props.question" :key="i.id">
         <div class="question">
           <img :src="i.img" alt="" style="width: 500px" />
