@@ -11,7 +11,7 @@ const router = useRouter()
 
 const activeItem = ref<number>(0)
 const functionList = ref([
-{ id: 0, name: 'AI Tutor', icon: Mind, router: '/function/AI' },
+  { id: 0, name: 'AI Tutor', icon: Mind, router: '/function/AI' },
   { id: 1, name: '讨论中心', icon: discuss, router: '/function/discuss' },
   { id: 2, name: '几何空间', icon: geometry, router: '/function/geometry-space' },
   { id: 3, name: '几何画板', icon: palette, router: '/function/draw' },

@@ -64,7 +64,7 @@ const close = () => {
   position: absolute;
   top: 10%;
   right: 20%;
-  .VueDragResize{
+  .VueDragResize {
     background: #fff;
   }
 }

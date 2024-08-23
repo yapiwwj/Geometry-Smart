@@ -14,7 +14,7 @@
           <li><h3>知识点讲解</h3></li>
           <iframe src="/pdf/1.pdf" frameborder="0"></iframe>
         </div>
-       <div class="content-box">
+        <div class="content-box">
           <li style="list-style: circle"><h3>知识点总结</h3></li>
           &emsp;
           <div
@@ -37,16 +37,14 @@
             </li>
           </ul>
         </div>
-        <div class="test">
-
-        </div>
+        <div class="test"></div>
 
         <div class="jiaohu-box">
           <ul>
             <li><h3>知识交互</h3></li>
           </ul>
-          <course1-cube />
           <course1-geometry />
+          <course1-cube />
         </div>
         <div class="question-box">
           <ul>

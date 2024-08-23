@@ -159,6 +159,11 @@ export const constantRoute = [
         name: 'onlineClass'
       },
       {
+        path: '/teacher/teach',
+        component: () => import('../views/teacher/home/teach.vue'),
+        name: 'teach'
+      },
+      {
         path: '/teacher/news',
         component: () => import('../views/teacher/home/news.vue'),
         name: 'news'

@@ -14,14 +14,15 @@ const menuList = ref([
       path: '/teacher/exam-center'
     },
     { index: 2, title: '在线课堂', className: 'iconfont icon-zaixianketang', path: '/teacher/online-class' },
-    { index: 3, title: '消息中心', className: 'iconfont icon-xiaoxi', path: '/teacher/news' },
-    { index: 4, title: '任务发布', className: 'iconfont icon-renwu', path: '/teacher/publish' },
-    { index: 5, title: '反馈收集', className: 'iconfont icon-radio', path: '/teacher/feedback' },
-    { index: 6, title: '发布考勤', className: 'iconfont icon-tag', path: '/teacher/attendance' }
+    { index: 3, title: '教学课件', className: 'iconfont icon-kejian', path: '/teacher/teach' },
+    { index: 4, title: '消息中心', className: 'iconfont icon-xiaoxi', path: '/teacher/news' },
+    { index: 5, title: '任务发布', className: 'iconfont icon-renwu', path: '/teacher/publish' },
+    { index: 6, title: '反馈收集', className: 'iconfont icon-radio', path: '/teacher/feedback' },
+    { index: 7, title: '发布考勤', className: 'iconfont icon-tag', path: '/teacher/attendance' }
   ],
   [
-    { index: 7, title: '使用指南', className: 'iconfont icon-map', path: '/teacher/guide' },
-    { index: 8, title: '账号设置', className: 'iconfont icon-shezhi', path: '/teacher/setting' }
+    { index: 8, title: '使用指南', className: 'iconfont icon-map', path: '/teacher/guide' },
+    { index: 9, title: '账号设置', className: 'iconfont icon-shezhi', path: '/teacher/setting' }
   ]
 ])
 const activeIndex = ref(0)

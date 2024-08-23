@@ -28,12 +28,38 @@ const courseBannerList = ref([
     img: 'http://121.40.154.188:8080/courseware/img/226d2782-231e-4360-8db9-0e4a94a11163.png'
   }
 ])
+// const courseBannerList = ref([
+//   {
+//     id: 1,
+//     img: '/img/1.png'
+//   },
+//   {
+//     id: 2,
+//     img: '/img/2.png'
+//   },
+//   {
+//     id: 3,
+//     img: '/img/3.png'
+//   },
+//   {
+//     id: 4,
+//     img: '/img/4.png'
+//   },
+//   {
+//     id: 5,
+//     img: '/img/5.png'
+//   },
+//   {
+//     id: 6,
+//     img: '/img/6.png'
+//   }
+// ])
 </script>
 
 <template>
   <div class="banner-container">
     <div class="iframe-container">
-      <!-- <iframe src="/static/cube.html" frameborder="0" scrolling="no" allowfullscreen></iframe> -->
+      <!-- <iframe src="/static/layoutCube.html" frameborder="0" scrolling="no" allowfullscreen></iframe> -->
       <iframe
         src="http://121.40.154.188:8080/courseware/img/4d6f30d3-4d13-441f-bd44-3029faca293b.html"
         frameborder="0"
@@ -41,16 +67,6 @@ const courseBannerList = ref([
       ></iframe>
     </div>
     <div class="main">
-      <!-- <ul class="images" :style="{ '--quantity': 6 }">
-        <li
-          v-for="i in 6"
-          :key="i"
-          :style="{ '--position': `${i}` }"
-          @click="router.push('/course')"
-        >
-          <img :src="`/img/scence${i}.png`" alt="" />
-        </li>
-      </ul> -->
 
       <ul class="images" :style="{ '--quantity': 6 }">
         <li

@@ -1,15 +1,14 @@
-
 <template>
   <div id="app">
     <ul class="button-container">
       <li>
         <el-button
-            v-for="(button, index) in buttonList"
-            :key="index"
-            :style="{ '--position': `${button.id}` }"
-            type="primary"
-            plain
-            @click="handle(button.id)"
+          v-for="(button, index) in buttonList"
+          :key="index"
+          :style="{ '--position': `${button.id}` }"
+          type="primary"
+          plain
+          @click="handle(button.id)"
         >
           {{ button.name }}
         </el-button>
@@ -62,14 +61,14 @@ const settings = reactive({
     positionY: 0,
     positionZ: 0
   },
-  Box:{
+  Box: {
     width: 1,
     height: 2,
     depth: 1,
     positionX: 0,
     positionY: 0,
     positionZ: 0
-  },
+  }
 })
 const buttonList = ref([
   { id: 0, name: '创建锥体' },
@@ -190,16 +189,12 @@ function addCone() {
     scene.remove(oldCone)
   }
   const geometry = new THREE.ConeGeometry(
-      settings.cone.radius,
-      settings.cone.height,
-      settings.cone.segments
+    settings.cone.radius,
+    settings.cone.height,
+    settings.cone.segments
   )
   const line = addEdges(geometry, 'cone')
-  line.position.set(
-      settings.cone.positionX,
-      settings.cone.positionY,
-      settings.cone.positionZ
-  )
+  line.position.set(settings.cone.positionX, settings.cone.positionY, settings.cone.positionZ)
   if (gui && !guiPanels.cone) {
     gui.show()
     addConeGUI()
@@ -211,16 +206,16 @@ function addCylinder() {
     scene.remove(oldCylinder)
   }
   const geometry = new THREE.CylinderGeometry(
-      settings.cylinder.radius,
-      settings.cylinder.radius,
-      settings.cylinder.height,
-      settings.cylinder.segments
+    settings.cylinder.radius,
+    settings.cylinder.radius,
+    settings.cylinder.height,
+    settings.cylinder.segments
   )
   const line = addEdges(geometry, 'cylinder')
   line.position.set(
-      settings.cylinder.positionX,
-      settings.cylinder.positionY,
-      settings.cylinder.positionZ
+    settings.cylinder.positionX,
+    settings.cylinder.positionY,
+    settings.cylinder.positionZ
   )
   if (gui && !guiPanels.cylinder) {
     gui.show()
@@ -233,16 +228,12 @@ function addSphere() {
     scene.remove(oldSphere)
   }
   const geometry = new THREE.SphereGeometry(
-      settings.Sphere.radius,
-      settings.Sphere.widthSegments ,
-      settings.Sphere.heightSegments
+    settings.Sphere.radius,
+    settings.Sphere.widthSegments,
+    settings.Sphere.heightSegments
   )
   const line = addEdges(geometry, 'Sphere')
-  line.position.set(
-      settings.Sphere.positionX,
-      settings.Sphere.positionY,
-      settings.Sphere.positionZ
-  )
+  line.position.set(settings.Sphere.positionX, settings.Sphere.positionY, settings.Sphere.positionZ)
   if (gui && !guiPanels.Sphere) {
     gui.show()
     addSphereGUI()
@@ -254,16 +245,12 @@ function addBox() {
     scene.remove(oldBox)
   }
   const geometry = new THREE.BoxGeometry(
-      settings.Box.width,
-      settings.Box.height,
-      settings.Box.depth,
+    settings.Box.width,
+    settings.Box.height,
+    settings.Box.depth
   )
   const line = addEdges(geometry, 'Box')
-  line.position.set(
-      settings.Box.positionX,
-      settings.Box.positionY,
-      settings.Box.positionZ
-  )
+  line.position.set(settings.Box.positionX, settings.Box.positionY, settings.Box.positionZ)
   if (gui && !guiPanels.Box) {
     gui.show()
     addBoxGUI()
@@ -280,7 +267,7 @@ function handleMouseDown(event) {
   const point = getPointOnPlane(mouse)
   if (!lineStart) {
     lineStart = point
-    tempLine = createTempLine(lineStart, lineStart)// Start and end at the same point initially
+    tempLine = createTempLine(lineStart, lineStart) // Start and end at the same point initially
     tempLines.push(tempLine)
     scene.add(tempLine)
   } else {
@@ -298,8 +285,8 @@ function handleMouseMove(event) {
 function getMousePosition(event) {
   const rect = container.value.getBoundingClientRect()
   return new THREE.Vector2(
-      ((event.clientX - rect.left) / rect.width) * 2 - 1,
-      -((event.clientY - rect.top) / rect.height) * 2 + 1
+    ((event.clientX - rect.left) / rect.width) * 2 - 1,
+    -((event.clientY - rect.top) / rect.height) * 2 + 1
   )
 }
 function getPointOnPlane(mouse) {
@@ -326,7 +313,7 @@ function finalizeLine(end) {
 //更新拖拽控制
 function updateDraggableObjects() {
   const draggableObjects = scene.children.filter(
-      (obj) => obj.userData.type === 'cone' || obj.userData.type === 'cylinder'
+    (obj) => obj.userData.type === 'cone' || obj.userData.type === 'cylinder'
   )
   dragControls.transformGroup = true // 如果你想要整个组一起拖拽
   dragControls.objects = draggableObjects
@@ -359,7 +346,7 @@ function addCylinderGUI() {
   cylinderFolder.add(settings.cylinder, 'positionX', -5, 5, 0.1).name('x坐标').onChange(addCylinder)
   cylinderFolder.add(settings.cylinder, 'positionY', -5, 5, 0.1).name('y坐标').onChange(addCylinder)
   cylinderFolder.add(settings.cylinder, 'positionZ', -5, 5, 0.1).name('z坐标').onChange(addCylinder)
-  guiPanels.cylinder = cylinderFolder;
+  guiPanels.cylinder = cylinderFolder
 
   cylinderFolder.open()
 }
@@ -367,44 +354,48 @@ function addSphereGUI() {
   if (!gui) return
   const SphereFolder = gui.addFolder('球体设置')
   SphereFolder.add(settings.Sphere, 'radius', 0.5, 2).name('半径').onChange(addSphere)
-  SphereFolder.add(settings.Sphere, 'widthSegments',8, 64, 2).name('水平分段数').onChange(addSphere)
-  SphereFolder.add(settings.Sphere, 'heightSegments', 12, 32, 1).name('垂直分段数').onChange(addSphere)
+  SphereFolder.add(settings.Sphere, 'widthSegments', 8, 64, 2)
+    .name('水平分段数')
+    .onChange(addSphere)
+  SphereFolder.add(settings.Sphere, 'heightSegments', 12, 32, 1)
+    .name('垂直分段数')
+    .onChange(addSphere)
   SphereFolder.add(settings.Sphere, 'positionX', -5, 5, 0.1).name('x坐标').onChange(addSphere)
   SphereFolder.add(settings.Sphere, 'positionY', -5, 5, 0.1).name('y坐标').onChange(addSphere)
   SphereFolder.add(settings.Sphere, 'positionZ', -5, 5, 0.1).name('z坐标').onChange(addSphere)
-  guiPanels.Sphere = SphereFolder;
+  guiPanels.Sphere = SphereFolder
   SphereFolder.open()
 }
 function addBoxGUI() {
   if (!gui) return
   const BoxFolder = gui.addFolder('立方体体设置')
-  BoxFolder.add(settings.Box, 'width',1, 10, 0.1).name('宽度').onChange(addBox)
-  BoxFolder.add(settings.Box, 'height',2, 4, 0.1).name('高度').onChange(addBox)
-  BoxFolder.add(settings.Box, 'depth',1, 10, 0.1).name('深度').onChange(addBox)
+  BoxFolder.add(settings.Box, 'width', 1, 10, 0.1).name('宽度').onChange(addBox)
+  BoxFolder.add(settings.Box, 'height', 2, 4, 0.1).name('高度').onChange(addBox)
+  BoxFolder.add(settings.Box, 'depth', 1, 10, 0.1).name('深度').onChange(addBox)
   BoxFolder.add(settings.Box, 'positionX', -5, 5, 0.1).name('x坐标').onChange(addBox)
   BoxFolder.add(settings.Box, 'positionY', -5, 5, 0.1).name('y坐标').onChange(addBox)
   BoxFolder.add(settings.Box, 'positionZ', -5, 5, 0.1).name('z坐标').onChange(addBox)
-  guiPanels.Box = BoxFolder;
+  guiPanels.Box = BoxFolder
   BoxFolder.open()
 }
-function destroy(){
-  if(gui){
-    Object.keys(guiPanels).forEach(key => {
+function destroy() {
+  if (gui) {
+    Object.keys(guiPanels).forEach((key) => {
       if (gui && guiPanels[key]) {
-        gui.removeFolder(guiPanels[key]);
-        guiPanels[key] = false; // 重置标记
+        gui.removeFolder(guiPanels[key])
+        guiPanels[key] = false // 重置标记
       }
-    });
+    })
     gui.hide()
   }
-  const typesToRemove = ['cone', 'cylinder', 'Sphere','Box'];
-  typesToRemove.forEach(type => {
-    const objectToRemove = scene.children.find(obj => obj.userData.type === type);
+  const typesToRemove = ['cone', 'cylinder', 'Sphere', 'Box']
+  typesToRemove.forEach((type) => {
+    const objectToRemove = scene.children.find((obj) => obj.userData.type === type)
     if (objectToRemove) {
-      scene.remove(objectToRemove);
+      scene.remove(objectToRemove)
     }
-  });
-  tempLines.forEach(line => {
+  })
+  tempLines.forEach((line) => {
     scene.remove(line)
   })
   tempLines = []
