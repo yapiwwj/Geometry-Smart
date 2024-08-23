@@ -14,8 +14,8 @@
           <li><h3>知识点讲解</h3></li>
           <iframe src="/pdf/1.pdf" frameborder="0"></iframe>
         </div>
-        <div class="content-box">
-          <li style="list-style: circle"><h3>知识点</h3></li>
+       <div class="content-box">
+          <li style="list-style: circle"><h3>知识点总结</h3></li>
           &emsp;
           <div
             id="contentHTML"
@@ -37,12 +37,16 @@
             </li>
           </ul>
         </div>
+        <div class="test">
+
+        </div>
 
         <div class="jiaohu-box">
           <ul>
             <li><h3>知识交互</h3></li>
           </ul>
           <course1-cube />
+          <course1-geometry />
         </div>
         <div class="question-box">
           <ul>
@@ -75,6 +79,7 @@ import {
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
 import Course1Cube from '@/views/course/components/course1Cube.vue'
+import Course1Geometry from '@/views/course/components/course1Geometry.vue'
 import Question1 from '@/views/course/components/question.vue'
 
 const tipsStore = useTipsStore()
@@ -126,24 +131,7 @@ const getTest = async () => {
   doneValue.value = done
   questionList.value = JSON.parse(question)
 }
-// const test = ref([{
-//   id: 0,
-//   img: 'http://121.40.154.188:8080/courseware/img/e7a3b831-1289-4e32-8004-8d5c2228cb7c.png',
-//   A: 'A. 3:5',
-//   B: 'B. 9:25',
-//   C: 'C. 5:√41',
-//   D: 'D. 7:9',
-//   name: 'q1'
-// }, {
-//   id: 1,
-//   img: 'http://121.40.154.188:8080/courseware/img/3ce3816d-0e13-48b1-93c1-d8e894f428ad.png',
-//   A: 'A.11:8',
-//   B: 'B.3:8',
-//   C: 'C.8:3',
-//   D: 'D.13:8',
-//   name: 'q2'
-// }])
-// console.log(JSON.stringify(test.value))
+
 onMounted(async () => {
   contentId.value = route.query.id
   const {

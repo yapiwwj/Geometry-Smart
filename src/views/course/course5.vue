@@ -15,7 +15,7 @@
           <iframe src="/pdf/5.pdf" frameborder="0"></iframe>
         </div>
         <div class="content-box">
-          <li style="list-style: circle"><h3>知识点</h3></li>
+          <li style="list-style: circle"><h3>知识点总结</h3></li>
           &emsp;
           <div
               id="contentHTML"

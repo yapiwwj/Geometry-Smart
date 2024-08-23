@@ -46,7 +46,7 @@ const drawer = ref(false)
                 <div class="avatar">
                   <img src="../../assets/icons/Mind.svg" alt="" />
                 </div>
-                <div class="text">{{ item.text }}</div>
+                <div class="text" v-html="item.text"></div>
               </i>
             </div>
 

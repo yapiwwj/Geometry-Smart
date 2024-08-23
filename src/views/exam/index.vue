@@ -1,207 +1,228 @@
 <template>
-  <div>
-    <div>
-      <video ref="localVideo" autoplay playsinline></video>
-      <div v-for="(stream, index) in remoteStreams" :key="index">
-        <video :srcObject="stream" autoplay playsinline></video>
-      </div>
-      <video ref="screenVideo" autoplay playsinline></video>
-    </div>
-    <button @click="startCall">Start Call</button>
-    <button @click="shareScreen">Share Screen</button>
-  </div>
+  <div ref="container" class="container" style="width: 65vw; height: 40vw"></div>
+  <el-button @click="addBox">添加长方体</el-button>
+  <el-button @click="addCone">添加锥体</el-button>
+  <el-button @click="addCylinder">添加圆柱体</el-button>
+  <el-button @click="addSphere">添加球体</el-button>
+  <el-button @click="clearAll">清除所有几何体</el-button>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, reactive } from 'vue';
+<script setup>
+import { onMounted, ref, reactive } from 'vue';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js';
+import { BoxHelper } from 'three';
 
-export default defineComponent({
-  setup() {
-    const localVideo = ref<HTMLVideoElement | null>(null);
-    const screenVideo = ref<HTMLVideoElement | null>(null);
-    const remoteStreams = reactive<MediaStream[]>([]);
-    let localStream: MediaStream | null = null;
-    let peerConnections: { [id: string]: RTCPeerConnection } = {};
-
-    const socket = new WebSocket('ws://your-signaling-server'); // 替换为你的信令服务器地址
-
-    const startCall = async () => {
-      localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-      if (localVideo.value && localStream) {
-        localVideo.value.srcObject = localStream;
-      }
-
-      socket.onmessage = async (message) => {
-        const data = JSON.parse(message.data);
-
-        if (data.type === 'offer') {
-          const peerConnection = createPeerConnection(data.from);
-          await peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
-          const answer = await peerConnection.createAnswer();
-          await peerConnection.setLocalDescription(answer);
-          socket.send(JSON.stringify({ type: 'answer', answer, to: data.from }));
-        }
-
-        if (data.type === 'answer') {
-          await peerConnections[data.from].setRemoteDescription(new RTCSessionDescription(data.answer));
-        }
-
-        if (data.type === 'ice-candidate') {
-          const candidate = new RTCIceCandidate(data.candidate);
-          await peerConnections[data.from].addIceCandidate(candidate);
-        }
-      };
-
-      socket.onopen = () => {
-        socket.send(JSON.stringify({ type: 'join', room: 'your-room-id' })); // 房间ID可以是任意字符串，确保所有用户都使用相同的房间ID
-      };
-
-      // 当一个新用户加入时，为该用户创建一个新连接
-      socket.onmessage = async (message) => {
-        const data = JSON.parse(message.data);
-        if (data.type === 'new-participant') {
-          const peerConnection = createPeerConnection(data.id);
-          const offer = await peerConnection.createOffer();
-          await peerConnection.setLocalDescription(offer);
-          socket.send(JSON.stringify({ type: 'offer', offer, to: data.id }));
-        }
-      };
-    };
-
-    const createPeerConnection = (id: string) => {
-      const configuration = {
-        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }],
-      };
-      const peerConnection = new RTCPeerConnection(configuration);
-
-      peerConnection.onicecandidate = (event) => {
-        if (event.candidate) {
-          socket.send(JSON.stringify({ type: 'ice-candidate', candidate: event.candidate, to: id }));
-        }
-      };
-
-      peerConnection.ontrack = (event) => {
-        if (event.streams[0]) {
-          remoteStreams.push(event.streams[0]);
-        }
-      };
-
-      localStream?.getTracks().forEach((track) => {
-        peerConnection.addTrack(track, localStream!);
-      });
-
-      peerConnections[id] = peerConnection;
-
-      return peerConnection;
-    };
-
-    const shareScreen = async () => {
-      const screenStream = await (navigator.mediaDevices as any).getDisplayMedia({ video: true });
-
-      if (screenVideo.value) {
-        screenVideo.value.srcObject = screenStream;
-      }
-
-      Object.values(peerConnections).forEach((peerConnection) => {
-        const videoTrack = screenStream.getVideoTracks()[0];
-        const sender = peerConnection.getSenders().find((s) => s.track?.kind === 'video');
-        if (sender) {
-          sender.replaceTrack(videoTrack);
-        }
-      });
-    };
-
-    return {
-      localVideo,
-      screenVideo,
-      remoteStreams,
-      startCall,
-      shareScreen,
-    };
+const container = ref(null);
+let scene, camera, renderer, controls, transformControls, boxHelper;
+const settings = reactive({
+  Cone: {
+    height: 2,
+    radius: 2,
+    segments: 4,
+    positionX: 0,
+    positionY: 0,
+    positionZ: 0,
+  },
+  Cylinder: {
+    height: 1,
+    radius: 1,
+    segments: 4,
+    positionX: 0,
+    positionY: 0,
+    positionZ: 0,
+  },
+  Sphere: {
+    radius: 2,
+    widthSegments: 128,
+    heightSegments: 256,
+    positionX: 0,
+    positionY: 0,
+    positionZ: 0,
+  },
+  Box: {
+    width: 4,
+    height: 2,
+    depth: 2,
+    positionX: 0,
+    positionY: 0,
+    positionZ: 0,
   },
 });
+
+onMounted(() => {
+  initThree();
+});
+
+function initThree() {
+  const width = container.value.clientWidth;
+  const height = container.value.clientHeight;
+
+  scene = new THREE.Scene();
+
+  camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  camera.position.z = 5;
+
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(width, height);
+  renderer.setClearColor(new THREE.Color('#aaaaaa'));
+
+  container.value.appendChild(renderer.domElement);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.05;
+
+  transformControls = new TransformControls(camera, renderer.domElement);
+  scene.add(transformControls);
+
+  transformControls.addEventListener('change', () => {
+    renderer.render(scene, camera);
+  });
+
+  transformControls.addEventListener('dragging-changed', (event) => {
+    controls.enabled = !event.value;
+  });
+
+  transformControls.addEventListener('objectChange', () => {
+    const object = transformControls.object;
+    if (object) {
+      console.log('Updated position:', object.position);
+    }
+  });
+
+  container.value.addEventListener('mousedown', onMouseDown);
+
+  animate();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  if (boxHelper) {
+    boxHelper.update();
+  }
+  renderer.render(scene, camera);
+}
+
+function addBox() {
+  const geometry = new THREE.BoxGeometry(
+    settings.Box.height,
+    settings.Box.width,
+    settings.Box.depth
+  );
+  const material = new THREE.MeshNormalMaterial();
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.userData.type = 'Box';
+  scene.add(mesh);
+  mesh.position.set(settings.Box.positionX, settings.Box.positionY, settings.Box.positionZ);
+  updateDraggableObjects();
+}
+
+function addCone() {
+  const geometry = new THREE.ConeGeometry(
+    settings.Cone.height,
+    settings.Cone.radius,
+    settings.Cone.segments
+  );
+  const material = new THREE.MeshNormalMaterial();
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.userData.type = 'Cone';
+  scene.add(mesh);
+  mesh.position.set(settings.Cone.positionX, settings.Cone.positionY, settings.Cone.positionZ);
+  updateDraggableObjects();
+}
+
+function addCylinder() {
+  const geometry = new THREE.CylinderGeometry(
+    settings.Cylinder.height,
+    settings.Cylinder.radius,
+    settings.Cylinder.segments
+  );
+  const material = new THREE.MeshNormalMaterial();
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.userData.type = 'Cylinder';
+  scene.add(mesh);
+  mesh.position.set(settings.Cylinder.positionX, settings.Cylinder.positionY, settings.Cylinder.positionZ);
+  updateDraggableObjects();
+}
+
+function addSphere() {
+  const geometry = new THREE.SphereGeometry(
+    settings.Sphere.radius,
+    settings.Sphere.widthSegments,
+    settings.Sphere.heightSegments
+  );
+  const material = new THREE.MeshNormalMaterial();
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.userData.type = 'Sphere';
+  scene.add(mesh);
+  mesh.position.set(settings.Sphere.positionX, settings.Sphere.positionY, settings.Sphere.positionZ);
+  updateDraggableObjects();
+}
+
+function updateDraggableObjects() {
+  const draggableObjects = scene.children.filter((obj) => obj instanceof THREE.Mesh);
+
+  draggableObjects.forEach((obj) => {
+    obj.userData.isSelected = false;
+    obj.addEventListener('click', () => {
+      selectObject(obj);
+    });
+  });
+}
+
+function selectObject(object) {
+  if (transformControls.object) {
+    transformControls.detach();
+    if (boxHelper) {
+      scene.remove(boxHelper);
+      boxHelper = null;
+    }
+  }
+
+  transformControls.setMode('translate'); // Set the mode to 'translate' for moving along axes
+  transformControls.attach(object);
+  boxHelper = new BoxHelper(object, 0xffff00); // Yellow color for the bounding box
+  scene.add(boxHelper);
+
+  object.userData.isSelected = true;
+}
+
+function clearAll() {
+  const meshes = scene.children.filter((obj) => obj instanceof THREE.Mesh);
+  meshes.forEach((mesh) => scene.remove(mesh));
+  if (transformControls.object) {
+    transformControls.detach();
+  }
+  if (boxHelper) {
+    scene.remove(boxHelper);
+    boxHelper = null;
+  }
+}
+
+function onMouseDown(event) {
+  event.preventDefault();
+  const rect = renderer.domElement.getBoundingClientRect();
+  const mouse = new THREE.Vector2(
+    ((event.clientX - rect.left) / rect.width) * 2 - 1,
+    -((event.clientY - rect.top) / rect.height) * 2 + 1
+  );
+
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects(scene.children);
+
+  if (intersects.length > 0) {
+    selectObject(intersects[0].object);
+  }
+}
 </script>
 
-<style scoped>
-video {
-  width: 300px;
-  height: 200px;
-  margin: 10px;
+<style>
+.container {
+  border: 1px solid #ddd;
 }
 </style>
-<!-- <template>
-  <div>
-    <h1>Conference ID: {{ conferenceId }}</h1>
-    <video ref="localVideo" autoplay></video>
-    <video ref="remoteVideo" autoplay></video>
-    <button @click="startScreenShare">Share Screen</button>
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-
-export default defineComponent({
-  setup() {
-    const route = useRoute()
-    const conferenceId = route.params.id as string
-    const localVideo = ref<HTMLVideoElement | null>(null)
-    const remoteVideo = ref<HTMLVideoElement | null>(null)
-    let peerConnection: RTCPeerConnection
-
-    onMounted(async () => {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      if (localVideo.value) {
-        localVideo.value.srcObject = mediaStream
-      }
-
-      peerConnection = new RTCPeerConnection()
-      mediaStream.getTracks().forEach((track) => {
-        peerConnection.addTrack(track, mediaStream)
-      })
-
-      peerConnection.ontrack = (event) => {
-        const [remoteStream] = event.streams
-        if (remoteVideo.value) {
-          remoteVideo.value.srcObject = remoteStream
-        }
-      }
-
-      const offer = await peerConnection.createOffer()
-      await peerConnection.setLocalDescription(offer)
-
-      // 使用 WebSocket 发送信令数据到服务器
-      const ws = new WebSocket(`ws://localhost:8080/signaling/${conferenceId}`)
-      ws.onmessage = async (event) => {
-        const data = JSON.parse(event.data)
-        if (data.type === 'offer') {
-          await peerConnection.setRemoteDescription(data)
-          const answer = await peerConnection.createAnswer()
-          await peerConnection.setLocalDescription(answer)
-          ws.send(JSON.stringify(peerConnection.localDescription))
-        } else if (data.type === 'answer') {
-          await peerConnection.setRemoteDescription(data)
-        } else if (data.type === 'candidate') {
-          await peerConnection.addIceCandidate(data.candidate)
-        }
-      }
-
-      peerConnection.onicecandidate = (event) => {
-        if (event.candidate) {
-          ws.send(JSON.stringify({ type: 'candidate', candidate: event.candidate }))
-        }
-      }
-    })
-
-    const startScreenShare = async () => {
-      const screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true })
-      screenStream.getTracks().forEach((track) => {
-        peerConnection.addTrack(track, screenStream)
-      })
-    }
-
-    return { conferenceId, startScreenShare }
-  }
-})
-</script> -->

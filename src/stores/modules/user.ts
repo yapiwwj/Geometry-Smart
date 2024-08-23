@@ -8,7 +8,6 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const localCookie = (cookie: string) => {
-    console.log(cookie)
     localStorage.setItem('token', cookie)
   }
   return {

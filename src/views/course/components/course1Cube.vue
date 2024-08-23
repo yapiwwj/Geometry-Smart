@@ -19,6 +19,7 @@ const infoList = ref([
 </script>
 
 <template>
+  <header style="display: flex;justify-content: center;"><h4>几何体的面和棱演示</h4> </header>
   <div class="wrap">
     <ul class="cube">
       <li class="side" v-for="item in cubeList" :key="item.id" :class="item.styleName">

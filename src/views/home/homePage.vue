@@ -1,7 +1,26 @@
-<script setup lang="ts">
+<script setup >
 import { useRouter } from 'vue-router'
+import { h } from 'vue'
+// import { ElMessage } from 'element-plus'
 
 const router = useRouter()
+router.beforeEach((to, from, next)=>{
+  if(to.path==='/login' || to.path==='/register'){
+    next()
+  }else{
+    const token = localStorage.getItem('token')
+    if(token){
+      next()
+    }else{
+      // next('/login')
+      ElNotification({
+        title: 'Title',
+        message: h('i', { style: 'color: #87afff' }, '您还未登录，请先登录'),
+      })
+    }
+  }
+})
+
 </script>
 
 <template>

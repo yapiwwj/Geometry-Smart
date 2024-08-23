@@ -1,0 +1,110 @@
+ <div>
+            <h4>&emsp;&emsp;定义：</h4>
+            <p>
+              &emsp;&emsp;立体几何是研究三维空间中物体的形状、大小、位置关系的数学分支。立体几何体，简称几何体，是由平面图形围绕某一直线或平面旋转，或平移而得到的具有一定体积和形状的物体。
+            </p>
+            <br />
+            <h4>&emsp;&emsp;分类：</h4>
+            <p>&emsp;&emsp;根据几何体的形态特点，我们可以将其分为以下几类：</p>
+            <br />
+            <p>
+              &emsp;&emsp;1.
+              &emsp;<strong>柱体</strong>：有两个平行且大小相同的多边形底面，侧面为平行四边形的几何体。特殊柱体包括：
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;（1）&emsp;<strong
+                ><span data-id="0" style="color: #63b0ff; cursor: pointer">正方体</span></strong
+              >：六个面都是正方形的特殊长方体，所有棱长相等。
+            </p>
+            <p style="display: flex;justify-content: center">
+              <img src="/content/course1/1.png" alt="" style="width: 180px">
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;（2）&emsp;<strong
+                ><span data-id="1" style="color: #63b0ff; cursor: pointer">长方体</span></strong
+              >：六个面都是矩形的平行六面体，且相对的两个面完全相同。
+            </p>
+            <p style="display: flex;justify-content: center">
+              <img src="/content/course1/2.png" alt="" style="width: 200px">
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;（3）&emsp;<strong
+                ><span data-id="2" style="color: #63b0ff; cursor: pointer">圆柱</span></strong
+              >：底面为圆，侧面为曲面的几何体，母线与底面垂直。
+            </p>
+            <p style="display: flex;justify-content: center">
+              <img src="/content/course1/3.png" alt="" style="width: 100px">
+            </p>
+            <br />
+            <p>
+              &emsp;&emsp;2. &emsp;
+              <strong>锥体</strong
+              >：有一个顶点，其余各点都在一个平面上（底面），且侧面都是三角形的几何体。特殊锥体包括：
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;（1）&emsp;
+              <strong><span data-id="3" style="color: #63b0ff; cursor: pointer">圆锥</span></strong
+              >：底面为圆，顶点在底面圆心上方的几何体，侧面为曲面，母线与底面圆相交于一点。
+            </p>
+            <p style="display: flex;justify-content: center">
+              <img src="/content/course1/4.png" alt="" style="width: 160px">
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;（2）&emsp;<strong
+                ><span data-id="4" style="color: #63b0ff; cursor: pointer">棱锥</span></strong
+              >：底面为多边形，顶点不在底面上的几何体，侧面为三角形。
+            </p>
+            <p style="display: flex;justify-content: center">
+              <img src="/content/course1/5.png" alt="" style="width: 160px">
+            </p>
+            <br />
+            &emsp;&emsp;3. &emsp;
+            <strong><span data-id="5" style="color: #63b0ff; cursor: pointer">球体</span></strong
+            >：所有点都与球心等距的点的集合，表面为曲面，无棱无顶点。
+            <p style="display: flex;justify-content: center">
+              <img src="/content/course1/6.png" alt="" style="width: 150px">
+            </p>
+            <br /><br />
+            <h4>&emsp;&emsp;几何体的基本性质与特征</h4>
+            <p>
+              &emsp;&emsp;1.&emsp;<strong>面</strong>：几何体由若干个面组成，面可以是平面也可以是曲面。
+            </p>
+            <p>&emsp;&emsp;2.&emsp;<strong>棱</strong>：两个相邻面的交线称为棱，棱是直线段。</p>
+            <p>&emsp;&emsp;3.&emsp;<strong>顶点</strong>：三条或三条以上棱的交点称为顶点。</p>
+            <p>
+              &emsp;&emsp;4.&emsp;<strong>底面</strong>：在几何体中，处于最下方的平面部分称为底面（对于锥体而言）。
+            </p>
+            <p>&emsp;&emsp;5.&emsp;<strong>侧面</strong>：除底面外的其他面称为侧面。</p>
+            <p>
+              &emsp;&emsp;6.&emsp;<strong>高</strong>：从底面某一点垂直到底面另一侧（或顶点）的最短距离称为高。
+            </p>
+            <p>
+              &emsp;&emsp;7.&emsp;<strong
+                ><span data-id="6" style="color: #63b0ff; cursor: pointer">母线</span
+                >（仅适用于圆锥、圆柱等）</strong
+              >：连接顶点与底面圆周上任意一点的线段。
+            </p>
+            <p style="display: flex;justify-content: center">
+              <img src="/content/course1/7.png" alt="" style="width: 400px">
+            </p>
+            <br />
+            <h4>&emsp;&emsp; 特征总结：</h4>
+            <p>&emsp;&emsp;1.&emsp; 正方体和长方体具有规则的棱长和面形，易于计算和描述。</p>
+            <p>
+              &emsp;&emsp;2.&emsp;
+              圆柱和圆锥的底面为圆，侧面为曲面，其表面积和体积计算涉及圆周率和积分概念。
+            </p>
+            <p>
+              &emsp;&emsp;3.&emsp;
+              棱柱和棱锥的底面为多边形，侧面为三角形或矩形，其性质与底面形状密切相关。
+            </p>
+            <p>
+              &emsp;&emsp;4.&emsp; 球体作为唯一没有棱和顶点的几何体，其所有点都等距于<strong
+                ><span data-id="7" style="color: #63b0ff; cursor: pointer">球心</span></strong
+              >，具有完美的对称性。
+            </p>
+            <p style="display: flex;justify-content: center;margin: 20px 0">
+              <img src="/content/course1/8.png" alt="" style="width: 240px">
+              <img src="/content/course1/9.png" alt="" style="width: 220px">
+            </p>
+          </div>

@@ -1,12 +1,31 @@
-<script setup lang="ts">
+<script setup >
 import LoginSlot from '../../components/loginRegisterSlot.vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { postLogin } from '@/api/login'
 import { useUserStore } from '@/stores/modules/user'
+import { h } from 'vue'
+// import { ElNotification } from 'element-plus'
+
 const userStore = useUserStore()
 
 const router = useRouter()
+router.beforeEach((to, from, next)=>{
+  if(to.path==='/login' || to.path==='/register' || to.path==='/homePage'){
+    next()
+  }else{
+    const token = localStorage.getItem('token')
+    if(token){
+      next()
+    }else{
+      ElNotification({
+        title: 'Title',
+        message: h('i', { style: 'color: #87afff' }, '您还未登录，请先登录！'),
+      })
+    }
+  }
+})
+
 
 const identifyList = ref([
   {
@@ -24,7 +43,7 @@ const identifyList = ref([
 const form = ref({ name: '', classname: '', password: '', identity: null })
 const login = async () => {
   const { data } = await postLogin(form.value)
-  console.log(data)
+  // console.log(data)
 
   if (form.value.identity === 1 && data) {
     userStore.localCookie(data)
