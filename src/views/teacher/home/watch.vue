@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import {getStudentsList} from '@/api/teacher'
-import type{Student_List} from '@/type/teacher'
+import { getStudentsList } from '@/api/teacher'
+import type { Student_List } from '@/type/teacher'
 
 const router = useRouter()
 const tableData = ref<Student_List[]>([])
 
 const getList = async () => {
-  const {data}= await getStudentsList()
+  const { data } = await getStudentsList()
   tableData.value.push(...data)
 }
 

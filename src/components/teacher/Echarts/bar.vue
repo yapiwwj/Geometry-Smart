@@ -3,8 +3,8 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, getCurrentInstance } from 'vue'
-import {getBarData} from '@/api/teacher'
-import type{Bar_Data_X ,Bar_Data_Y} from '@/type/teacher'
+import { getBarData } from '@/api/teacher'
+import type { Bar_Data_X, Bar_Data_Y } from '@/type/teacher'
 const props = defineProps(['userId'])
 
 const chartDom = ref<HTMLElement>()
@@ -34,7 +34,7 @@ const option = ref({
 })
 
 const getData = async () => {
-  const {data} = await getBarData(props.userId)
+  const { data } = await getBarData(props.userId)
   dataX.value.push(...data.x)
   dataY.value.push(...data.y)
   updateChart()

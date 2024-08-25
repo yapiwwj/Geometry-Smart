@@ -1,123 +1,151 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref } from 'vue'
-import { judgeQuestion } from '@/api/course'
-import { getTestContents } from '@/api/course'
+import { onMounted, ref } from 'vue'
+import { getTestContents, judgeQuestion } from '@/api/course'
 
-const props = defineProps(['question', 'done', 'id', 'lastSheet'])
+const props = defineProps(['id'])
+//获取题目
+const questionList = ref<any[]>([])
+const doneValue = ref()
+const analysisValue = ref<string[]>([])
+const answerValue = ref<string[]>([])
+const lastSheet = ref<any[]>([])
+const alphabet = ref('BB')
+const getTest = async () => {
 
-const checkedList = ref<boolean[][]>([
-  [false, false, false, false],
-  [false, false, false, false]
-])
+  const data_get = {
+    id: props.id,
+    type: 0
+  }
+  const {
+    data: { done, question }
+  } = await getTestContents(JSON.stringify(data_get))
+  doneValue.value = done
+  questionList.value = JSON.parse(question)
+
+  //若做过，获取答案
+  if (doneValue.value === 1) {
+    console.log('已答题')
+    const data_get = {
+      id: props.id,
+      type: 0
+    }
+    const {
+      data: { analysis, answer, sheet }
+    } = await getTestContents(JSON.stringify(data_get))
+
+    analysisValue.value = analysis!.split('|') //['test','test']
+    answerValue.value = answer!.split('') //['B','B']
+    lastSheet.value = JSON.parse(sheet as any)
+
+
+    // const judge_data = {
+    //   id: props.id,
+    //   type: 0,
+    //   sheet: JSON.stringify(lastSheet.value)
+    // }
+    // const {data:{ans}} = await judgeQuestion(JSON.stringify(judge_data))
+    // alphabet.value=ans
+  }
+
+}
+
 
 const activeNames = ref([''])
 const handleChange = (val: string[]) => {}
 
-//答题数组
-const sheetList = ref<{ id: number; value: string }[]>([])
-const radio = (value: string, id: number) => {
+//提交
+const mySheetList = ref<{ id: number; value: string }[]>([])
+const select = async (value: string, id: number) => {
   const data = { id, value }
-  sheetList.value.push(data)
+  // 查找是否已有相同 id 的数据，如果有则更新它
+  const existingIndex = mySheetList.value.findIndex((item) => item.id === id)
+  // 如果存在相同的 id，更新该项的 value,如果不存在，则添加新的数据
+  existingIndex !== -1 ? (mySheetList.value[existingIndex] = data) : mySheetList.value.push(data)
+
+  // 对 answerList 按照 id 升序排序
+  mySheetList.value.sort((a, b) => a.id - b.id)
+  handleAnswerToBoolean()
 }
 
-const handleSheetList = computed(() => {
-  const lastValueMap = new Map<number, string>()
-  sheetList.value.forEach((item) => {
-    lastValueMap.set(item.id, item.value)
-  })
-  const sortedList = Array.from(lastValueMap.entries())
-    .sort((a, b) => a[0] - b[0])
-    .map((entry) => entry[1])
-  return sortedList.join('')
-})
-
-//post
-const analysisValue = ref<string[]>([])
-const submit = async () => {
-  await handleSubmit()
-}
-
-const handleSubmit = async () => {
-  const data = { id: Number(props.id), type: 0, sheet: handleSheetList.value }
-  await judgeQuestion(JSON.stringify(data))
-}
-
-const lastSheetValue = ref<string>('')
-const answerValue = ref<string[]>([])
-const lastSheet = async () => {
-  const data = { id: Number(props.id), type: 0 }
-  const {
-    data: { sheet, analysis, answer }
-  } = await getTestContents(JSON.stringify(data))
-  if (sheet != null && analysis != null && answer != null) {
-    analysisValue.value = analysis.split('|')
-    lastSheetValue.value = sheet
-    answerValue.value = answer.split('')
-  }
-}
-
+//将{id:number, value:string}[]处理成boolean[][]格式
 const indexMap: Record<string, number> = { A: 0, B: 1, C: 2, D: 3 }
-const handleLastSheet = computed(() => {
-  return lastSheetValue.value.split('').map((char) => {
-    const selectionArray = [false, false, false, false]
-    const index = indexMap[char]
-    if (index !== undefined) {
-      selectionArray[index] = true
-    }
-    return selectionArray
-  })
-})
+const sheetList = ref<boolean[][]>([])
+const handleAnswerToBoolean = () => {
+  // 初始化结果数组
+  // 更新 sheetList
+  sheetList.value = mySheetList.value.map((item) => {
+    // 初始化每行的布尔数组，长度为4，对应 A, B, C, D
+    const row = new Array(4).fill(false)
 
+    // 根据 value 找到对应的列索引，并设置为 true
+    const valueIndex = indexMap[item.value]
+    if (valueIndex !== undefined) {
+      row[valueIndex] = true
+    }
+
+    return row
+  })
+}
+
+const submit = async () => {
+  const judge_data = {
+    id: props.id,
+    type: 0,
+    sheet: JSON.stringify(sheetList.value)
+  }
+  const res = await judgeQuestion(JSON.stringify(judge_data))
+  lastSheet.value = res.data.judge
+  await getTest()
+}
 onMounted(() => {
-  lastSheet()
+  // lastSheet()
+  getTest()
 })
 </script>
 
 <template>
   <div class="qusetion-container">
     <ul>
-      <li class="question-body" style="list-style: none" v-for="i in props.question" :key="i.id">
+      <li class="question-body" style="list-style: none" v-for="i in questionList" :key="i.id">
         <div class="question">
           <img :src="i.img" alt="" style="width: 500px" />
           <div class="select">
             <input
               type="radio"
               :name="i.name"
-              :checked="props.done === 1 ? handleLastSheet[i.id] : checkedList[i.id][0]"
-              :disabled="props.done === 1"
-              @click="radio('A', i.id)"
+              :checked="doneValue === 0 ? false : lastSheet[i.id][0]"
+              :disabled="doneValue === 1"
+              @click="select('A', i.id)"
             /><span>{{ i.A }}</span>
             <input
               type="radio"
               :name="i.name"
-              :checked="props.done === 1 ? handleLastSheet[i.id] : checkedList[i.id][1]"
-              :disabled="props.done === 1"
-              @click="radio('B', i.id)"
+              :checked="doneValue === 0 ? false : lastSheet[i.id][1]"
+              :disabled="doneValue === 1"
+              @click="select('B', i.id)"
             /><span>{{ i.B }}</span>
             <input
               type="radio"
               :name="i.name"
-              :checked="props.done === 1 ? handleLastSheet[i.id] : checkedList[i.id][2]"
-              :disabled="props.done === 1"
-              @click="radio('C', i.id)"
+              :checked="doneValue === 0 ? false : lastSheet[i.id][2]"
+              :disabled="doneValue === 1"
+              @click="select('C', i.id)"
             /><span>{{ i.C }}</span>
             <input
               type="radio"
               :name="i.name"
-              :checked="props.done === 1 ? handleLastSheet[i.id] : checkedList[i.id][3]"
-              :disabled="props.done === 1"
-              @click="radio('D', i.id)"
+              :checked="doneValue === 0 ? false : lastSheet[i.id][3]"
+              :disabled="doneValue === 1"
+              @click="select('D', i.id)"
             /><span>{{ i.D }}</span>
           </div>
         </div>
-        <div class="answer" v-if="props.done === 1">
+        <div class="answer" v-if="doneValue === 1">
           <el-collapse v-model="activeNames" @change="handleChange">
             <el-collapse-item title="显示答案">
               <div>
-                <!-- <h4>{{ answerValue[i.id] }}</h4>
-                <p>{{ analysisValue[i.id] }}</p> -->
-                <h4>B</h4>
-                <p>根据棱柱的定义，可知1、2、6为属于棱柱。</p>
+                <h4>{{ alphabet[i.id] }}</h4>
+                <p>{{ analysisValue[i.id] }}</p>
                 <p class="QR">
                   <img src="/img/QR.jpg" alt="" />
                   <span>扫码观看视频讲解</span>

@@ -50,7 +50,7 @@
           <ul>
             <li><h3>知识小测</h3></li>
           </ul>
-          <question1 :question="questionList" :done="doneValue" :id="contentId" />
+          <question1 :id="contentId" />
         </div>
       </div>
     </li>
@@ -68,12 +68,7 @@ import dragResize from '../../components/dragResize.vue'
 import MathJax from '@/utils/mathjax.ts'
 import { useTipsStore } from '@/stores/index'
 import { storeToRefs } from 'pinia'
-import {
-  getCourseContents,
-  getTipContents,
-  updateTipContents,
-  getTestContents
-} from '@/api/course/index.ts'
+import { getCourseContents, getTipContents, updateTipContents } from '@/api/course/index.ts'
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
 import Course1Cube from '@/views/course/components/course1Cube.vue'
@@ -85,6 +80,7 @@ const { content, isTipShowArrayList } = storeToRefs(tipsStore)
 const route = useRoute()
 
 const contentId = ref()
+contentId.value = route.query.id
 
 const popTip = async (e) => {
   const target = e.target
@@ -115,23 +111,8 @@ const handleMouseUp = () => {
     selectedRange.value = null
   }
 }
-//
-const questionList = ref([])
-const doneValue = ref()
-const getTest = async () => {
-  const data = {
-    id: contentId.value,
-    type: 0
-  }
-  const {
-    data: { done, question }
-  } = await getTestContents(JSON.stringify(data))
-  doneValue.value = done
-  questionList.value = JSON.parse(question)
-}
 
 onMounted(async () => {
-  contentId.value = route.query.id
   const {
     data: { content, init }
   } = await getCourseContents(contentId.value)
@@ -143,8 +124,6 @@ onMounted(async () => {
     }
     MathJax.MathQueue()
   })
-
-  await getTest()
 })
 </script>
 

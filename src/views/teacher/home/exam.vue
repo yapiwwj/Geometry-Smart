@@ -2,7 +2,6 @@
 
 <template>
   <div></div>
-  <!-- <img src="/Snipaste_2024-08-20_11-22-34.png" alt="" /> -->
 </template>
 
 <style scoped lang="scss">

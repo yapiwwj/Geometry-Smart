@@ -70,7 +70,7 @@ interface JudgeData {
   type: number
   sheet: string
   answer: string
-  analysis?: string
+  analysis?: string,
 }
 
 interface Judge_Data {
@@ -78,6 +78,7 @@ interface Judge_Data {
   analysis: string
   judge: boolean[][]
   ok: boolean[][]
+  ans: string
 }
 
 export type JudgeResponse = ApiResponse<Judge_Data>

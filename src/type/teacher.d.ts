@@ -26,5 +26,5 @@ export type Radar_Data_Y = number[]
 /**
  * line
  */
-export type Line_Data_X=string[][]
-export type Line_Data_Y=number[]
+export type Line_Data_X = string[][]
+export type Line_Data_Y = number[]
