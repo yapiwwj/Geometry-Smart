@@ -19,6 +19,18 @@
         }
       }
     }
+    .answer{
+      div{
+       .QR{
+        display: flex;
+        align-items: end;
+        margin-top: 20px;
+         img{
+          width: 50px;
+        }
+       }
+      }
+    }
   }
 
 }

@@ -114,8 +114,14 @@ onMounted(() => {
           <el-collapse v-model="activeNames" @change="handleChange">
             <el-collapse-item title="显示答案">
               <div>
-                <h4>{{ answerValue[i.id] }}</h4>
-                <p>{{ analysisValue[i.id] }}</p>
+                <!-- <h4>{{ answerValue[i.id] }}</h4>
+                <p>{{ analysisValue[i.id] }}</p> -->
+                <h4>B</h4>
+                <p>根据棱柱的定义，可知1、2、6为属于棱柱。</p>
+                <p class="QR">
+                  <img src="/img/QR.jpg" alt="" />
+                  <span>扫码观看视频讲解</span>
+                </p>
               </div>
             </el-collapse-item>
           </el-collapse>

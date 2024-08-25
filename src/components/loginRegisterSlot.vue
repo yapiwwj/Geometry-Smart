@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <!-- <iframe src="/static/screen.html" frameborder="0" scrolling="no"></iframe> -->
-    <iframe
+    <iframe src="/static/screen.html" frameborder="0" scrolling="no"></iframe>
+    <!-- <iframe
       src="http://121.40.154.188:8080/courseware/img/6442c6ea-679b-46d0-b199-62eb7174dcbf.html"
       frameborder="0"
       scrolling="no"
-    ></iframe>
+    ></iframe> -->
     <div class="box">
       <slot name="title"></slot>
       <slot name="subTitle"></slot>

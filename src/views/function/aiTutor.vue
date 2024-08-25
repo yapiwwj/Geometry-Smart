@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted } from 'vue'
 import { useAIStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { getAIChat } from '@/api/function'
@@ -33,6 +33,18 @@ const sendInfo = async () => {
 
 // 放大显示
 const drawer = ref(false)
+
+//视频测试暂用
+const isFrameShow = ref(false)
+const show = ()=>{
+  setInterval(()=>{
+    isFrameShow.value = true
+  },20000)
+}
+
+onMounted(()=>{
+  show()
+})
 </script>
 
 <template>
@@ -105,7 +117,7 @@ const drawer = ref(false)
       </li>
       <li class="three-model">
         <p>立体可视化</p>
-        <iframe src="/static/model1.html" frameborder="0" scrolling="no"></iframe>
+        <iframe v-if="isFrameShow" src="/static/model1.html" frameborder="0" scrolling="no"></iframe>
         <!-- <iframe
           src="http://121.40.154.188:8080/courseware/img/7b011569-fd03-40e3-8937-5206806cf260.html"
           frameborder="0"

@@ -24,6 +24,7 @@ const handle = (id: number) => {
     </ul>
     <el-drawer v-model="drawer" title="I am the title" :with-header="false">
       <span>聊天框</span>
+      <img src="/img/chat.png" alt="" />
     </el-drawer>
   </div>
 </template>

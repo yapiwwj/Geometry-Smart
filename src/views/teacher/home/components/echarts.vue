@@ -11,10 +11,10 @@ const {id, name} = route.query
 
 <template>
   <h2>{{name}}的AI智能分析</h2>
-  <Bar/>
+  <Bar :userId="id"/>
   <div>
-    <Radar/>
-    <Line/>
+    <Radar :userId="id"/>
+    <Line :userId="id"/>
   </div>
 </template>
 

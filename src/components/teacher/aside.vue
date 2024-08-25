@@ -27,7 +27,6 @@ const menuList = ref([
 ])
 const activeIndex = ref(0)
 const handleActive = (id: number, path: string) => {
-  console.log(id, path)
   activeIndex.value = id
   router.push(path)
 }

@@ -3,9 +3,9 @@ import { ref } from 'vue'
 import UserCenterSlot from '@/components/userCenterSlot.vue'
 
 const discussList = ref([
-  { id: 0, event: '发帖', times: 0 },
-  { id: 1, event: '回帖', times: 0 },
-  { id: 2, event: '获赞量', times: 0 }
+  { id: 0, event: '发帖', times: 7},
+  { id: 1, event: '回帖', times: 10 },
+  { id: 2, event: '获赞量', times: 30 }
 ])
 </script>
 

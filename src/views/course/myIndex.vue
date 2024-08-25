@@ -1,33 +1,3 @@
-<template>
-  <div>
-    <el-container>
-      <el-aside width="200px" class="aside">
-        <ul>
-          <li
-            v-for="item in directory"
-            :key="item.id"
-            @click="toContent(item.url, item.id)"
-            :style="{ background: activeId === item.id ? '#daecf6' : '' }"
-          >
-            {{ item.title }}
-          </li>
-          <li class="onlineClass" @click="router.push({ path: '/course/online-class' })">
-            <el-icon size="20"><DataLine /></el-icon>
-            <span>在线课堂</span>
-          </li>
-          <li class="test">
-            <el-icon  size="20"><Reading /></el-icon>
-            <span>进阶测试</span>
-          </li>
-        </ul>
-      </el-aside>
-      <el-main>
-        <router-view />
-      </el-main>
-    </el-container>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -44,12 +14,51 @@ const directory = ref([
   { id: 5, title: '第六节 立体几何综合', url: '/course/course6' }
 ])
 
+const handle = (id: number) => {
+  activeId.value = id
+  router.push({ path: '/course/online-class' })
+}
+
 const activeId = ref<number>(0)
-const toContent = (url:string, id:number) => {
+const toContent = (url: string, id: number) => {
   activeId.value = id
   router.push({ path: url, query: { id } })
 }
 </script>
+
+<template>
+  <div>
+    <el-container>
+      <el-aside width="200px" class="aside">
+        <ul>
+          <li
+            v-for="item in directory"
+            :key="item.id"
+            @click="toContent(item.url, item.id)"
+            :style="{ background: activeId === item.id ? '#daecf6' : '' }"
+          >
+            {{ item.title }}
+          </li>
+          <li
+            class="onlineClass"
+            @click="handle(6)"
+            :style="{ background: activeId === 6 ? '#daecf6' : '' }"
+          >
+            <el-icon size="20"><DataLine /></el-icon>
+            <span>在线课堂</span>
+          </li>
+          <li class="test" :style="{ background: activeId === 7 ? '#daecf6' : '' }">
+            <el-icon size="20"><Reading /></el-icon>
+            <span>进阶测试</span>
+          </li>
+        </ul>
+      </el-aside>
+      <el-main>
+        <router-view />
+      </el-main>
+    </el-container>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 @import url('../../styles/cource/index.scss');
