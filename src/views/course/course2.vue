@@ -44,7 +44,8 @@
           <ul>
             <li style="list-style: circle"><h3>知识交互</h3></li>
           </ul>
-          <course1-cube />
+          <course2SV/>
+          <course2YZSV/>
         </div>
 
         <div class="question-box">
@@ -74,7 +75,8 @@ import {
 } from '@/api/course/index.ts'
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
-import Course1Cube from '@/views/course/components/course1Cube.vue'
+import course2SV from '@/views/course/components/course2SV.vue'
+import course2YZSV from '@/views/course/components/course2YZSV.vue'
 import Question1 from '@/views/course/components/question.vue'
 
 const tipsStore = useTipsStore()
@@ -135,7 +137,7 @@ onMounted(async () => {
   tipsStore.handleContent(content, init)
 
   await nextTick(() => {
-    if (MathJax.isMathjaxConfig) {
+    if (MathJax.isMathjaxConfig) {~
       MathJax.initMathjaxConfig()
     }
     MathJax.MathQueue()

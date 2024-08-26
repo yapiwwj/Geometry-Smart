@@ -27,7 +27,10 @@ const jiaohuComponents = ref([
       defineAsyncComponent(() => import('../../course/components/course1Cube.vue'))
     ]
   },
-  { id: 1, components: [] },
+  { id: 1, components: [
+    defineAsyncComponent(() => import('../../course/components/course2SV.vue')),
+      defineAsyncComponent(() => import('../../course/components/course2YZSV.vue'))
+    ] },
   { id: 2, components: [] },
   {
     id: 3,
