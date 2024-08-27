@@ -4,7 +4,7 @@
   <div class="header-box">
     <div class="left">
       <img src="../../../assets/icons/me.svg" alt="" />
-      <span>小多</span>
+      <span>guest</span>
     </div>
     <div class="right">
       <div class="score-box">
