@@ -9,10 +9,19 @@
           :contentId="contentId"
         />
       </div>
+
       <div class="content-container">
         <div class="pdf-box">
           <li><h3>知识点讲解</h3></li>
-          <iframe src="/pdf/4.pdf" frameborder="0"></iframe>
+          <div class="image-slider">
+            <el-button @click="prevImage" :disabled="isFirstImage"
+            ><el-icon><ArrowLeftBold /></el-icon
+            ></el-button>
+            <img :src="currentImg" alt="Image" />
+            <el-button @click="nextImage" :disabled="isLastImage"
+            ><el-icon><ArrowRightBold /></el-icon
+            ></el-button>
+          </div>
         </div>
 
         <div class="content-box">
@@ -39,14 +48,11 @@
           </ul>
         </div>
 
-        <div class="jiaohu-box">
-          <ul>
-            <li style="list-style: circle"><h3>知识交互</h3></li>
-          </ul>
-          <course4-angle />
-        </div>
         <div class="question-box">
-          <question1 :question="questionList" :done="doneValue" :id="contentId" />
+          <ul>
+            <li><h3>知识小测</h3></li>
+          </ul>
+          <question1 :id="contentId" />
         </div>
       </div>
     </li>
@@ -59,7 +65,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, computed } from 'vue'
 import dragResize from '../../components/dragResize.vue'
 import MathJax from '@/utils/mathjax.ts'
 import { useTipsStore } from '@/stores/index'
@@ -68,12 +74,35 @@ import {
   getCourseContents,
   getTipContents,
   updateTipContents,
-  getTestContents
+  getPdf
 } from '@/api/course/index.ts'
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
-import Course4Angle from '@/views/course/components/course4Angle.vue'
 import Question1 from '@/views/course/components/question.vue'
+import { ArrowLeftBold, ArrowRightBold } from '@element-plus/icons-vue'
+
+const images = ref([])
+
+const currentIndex = ref(0)
+const currentImg = computed(() => images.value[currentIndex.value])
+const isFirstImage = computed(() => currentIndex.value === 0)
+const isLastImage = computed(() => currentIndex.value === images.value.length - 1)
+
+const prevImage = () => {
+  if (currentIndex.value > 0) {
+    currentIndex.value--
+  }
+}
+const nextImage = () => {
+  if (currentIndex.value < images.value.length - 1) {
+    currentIndex.value++
+  }
+}
+
+const getPDFResponse = async ()=>{
+  const {data} = await getPdf(contentId.value)
+  images.value = data
+}
 
 const tipsStore = useTipsStore()
 const { content, isTipShowArrayList } = storeToRefs(tipsStore)
@@ -110,20 +139,6 @@ const handleMouseUp = () => {
     selectedRange.value = null
   }
 }
-//
-const questionList = ref([])
-const doneValue = ref()
-const getTest = async () => {
-  const data = {
-    id: contentId.value,
-    type: 0
-  }
-  const {
-    data: { done, question }
-  } = await getTestContents(data)
-  doneValue.value = done
-  questionList.value = JSON.parse(question)
-}
 
 onMounted(async () => {
   contentId.value = route.query.id
@@ -139,7 +154,7 @@ onMounted(async () => {
     MathJax.MathQueue()
   })
 
-  await getTest()
+  await getPDFResponse()
 })
 </script>
 

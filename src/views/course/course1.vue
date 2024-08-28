@@ -68,29 +68,14 @@ import dragResize from '../../components/dragResize.vue'
 import MathJax from '@/utils/mathjax.ts'
 import { useTipsStore } from '@/stores/index'
 import { storeToRefs } from 'pinia'
-import { getCourseContents, getTipContents, updateTipContents } from '@/api/course/index.ts'
+import { getCourseContents, getTipContents, updateTipContents,getPdf } from '@/api/course/index.ts'
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
 import Question1 from '@/views/course/components/question.vue'
 import { ArrowLeftBold, ArrowRightBold } from '@element-plus/icons-vue'
 
-const test = ref(
-  '<iframe src="/static/square.html" frameborder="0" style="width: 100%;height: 50vh"></iframe>'
-)
 //切换图片
-const images = ref([
-  '/content/course1/c0.png',
-  '/content/course1/c1.png',
-  '/content/course1/c2.png',
-  '/content/course1/c3.png',
-  '/content/course1/c4.png',
-  '/content/course1/c5.png',
-  '/content/course1/c6.png',
-  '/content/course1/c7.png',
-  '/content/course1/c8.png',
-  '/content/course1/c9.png',
-  '/content/course1/c10.png'
-])
+const images = ref([])
 
 const currentIndex = ref(0)
 const currentImg = computed(() => images.value[currentIndex.value])
@@ -106,6 +91,11 @@ const nextImage = () => {
   if (currentIndex.value < images.value.length - 1) {
     currentIndex.value++
   }
+}
+
+const getPDFResponse = async ()=>{
+ const {data} = await getPdf(contentId.value)
+  images.value = data
 }
 
 const tipsStore = useTipsStore()
@@ -157,6 +147,7 @@ onMounted(async () => {
     }
     MathJax.MathQueue()
   })
+  await getPDFResponse()
 })
 </script>
 

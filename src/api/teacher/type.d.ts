@@ -52,3 +52,8 @@ interface Line_Data {
   y: number[]
 }
 export type Line_Data_Response = Public_Response<Line_Data>
+
+/**
+ * pdf
+ */
+export type Pdf_Response = Public_Response<string>

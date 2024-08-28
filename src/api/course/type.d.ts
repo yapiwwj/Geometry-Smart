@@ -63,6 +63,9 @@ interface TestContentData {
   answer?: string
 }
 
+/**
+ * 获取知识小测内容
+ */
 export type GetTestContentResponse = ApiResponse<TestContentData>
 
 interface JudgeData {
@@ -81,4 +84,13 @@ interface Judge_Data {
   ans: string
 }
 
+/**
+ * 获取知识小测判断逻辑
+ */
 export type JudgeResponse = ApiResponse<Judge_Data>
+
+
+/**
+ * 获取pdf
+ */
+export type GetPdfResponse = ApiResponse<string[]>

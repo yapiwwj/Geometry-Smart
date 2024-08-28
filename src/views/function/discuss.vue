@@ -191,7 +191,7 @@ const handleCheckAll = (val: CheckboxValueType) => {
       <li>
         <div class="range flex">
           <img src="../../assets/icons/me.svg" alt="" />
-          <span>小多</span>
+          <span>guest</span>
         </div>
       </li>
       <li>

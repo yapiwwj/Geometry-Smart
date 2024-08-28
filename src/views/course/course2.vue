@@ -74,26 +74,14 @@ import {
   getCourseContents,
   getTipContents,
   updateTipContents,
-  getTestContents
+  getPdf
 } from '@/api/course/index.ts'
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
 import Question1 from '@/views/course/components/question.vue'
 import { ArrowLeftBold, ArrowRightBold } from '@element-plus/icons-vue'
 
-const images = ref([
-  '/content/course1/c0.png',
-  '/content/course1/c1.png',
-  '/content/course1/c2.png',
-  '/content/course1/c3.png',
-  '/content/course1/c4.png',
-  '/content/course1/c5.png',
-  '/content/course1/c6.png',
-  '/content/course1/c7.png',
-  '/content/course1/c8.png',
-  '/content/course1/c9.png',
-  '/content/course1/c10.png'
-])
+const images = ref([])
 
 const currentIndex = ref(0)
 const currentImg = computed(() => images.value[currentIndex.value])
@@ -109,6 +97,11 @@ const nextImage = () => {
   if (currentIndex.value < images.value.length - 1) {
     currentIndex.value++
   }
+}
+
+const getPDFResponse = async ()=>{
+  const {data} = await getPdf(contentId.value)
+  images.value = data
 }
 
 const tipsStore = useTipsStore()
@@ -146,20 +139,6 @@ const handleMouseUp = () => {
     selectedRange.value = null
   }
 }
-//
-const questionList = ref([])
-const doneValue = ref()
-const getTest = async () => {
-  const data = {
-    id: contentId.value,
-    type: 0
-  }
-  const {
-    data: { done, question }
-  } = await getTestContents(JSON.stringify(data))
-  doneValue.value = done
-  questionList.value = JSON.parse(question)
-}
 
 onMounted(async () => {
   contentId.value = route.query.id
@@ -170,12 +149,12 @@ onMounted(async () => {
 
   await nextTick(() => {
     if (MathJax.isMathjaxConfig) {
-      ~MathJax.initMathjaxConfig()
+      MathJax.initMathjaxConfig()
     }
     MathJax.MathQueue()
   })
 
-  await getTest()
+  await getPDFResponse()
 })
 </script>
 
