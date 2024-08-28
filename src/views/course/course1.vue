@@ -13,13 +13,17 @@
         <div class="pdf-box">
           <li><h3>知识点讲解</h3></li>
           <div class="image-slider">
-            <el-button @click="prevImage" :disabled="isFirstImage"
-              ><el-icon><ArrowLeftBold /></el-icon
-            ></el-button>
+            <el-button @click="prevImage" :disabled="isFirstImage">
+              <el-icon>
+                <ArrowLeftBold />
+              </el-icon>
+            </el-button>
             <img :src="currentImg" alt="Image" />
-            <el-button @click="nextImage" :disabled="isLastImage"
-              ><el-icon><ArrowRightBold /></el-icon
-            ></el-button>
+            <el-button @click="nextImage" :disabled="isLastImage">
+              <el-icon>
+                <ArrowRightBold />
+              </el-icon>
+            </el-button>
           </div>
         </div>
         <div class="content-box">
@@ -68,7 +72,7 @@ import dragResize from '../../components/dragResize.vue'
 import MathJax from '@/utils/mathjax.ts'
 import { useTipsStore } from '@/stores/index'
 import { storeToRefs } from 'pinia'
-import { getCourseContents, getTipContents, updateTipContents,getPdf } from '@/api/course/index.ts'
+import { getCourseContents, getTipContents, updateTipContents, getPdf } from '@/api/course/index.ts'
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
 import Question1 from '@/views/course/components/question.vue'
@@ -93,8 +97,8 @@ const nextImage = () => {
   }
 }
 
-const getPDFResponse = async ()=>{
- const {data} = await getPdf(contentId.value)
+const getPDFResponse = async () => {
+  const { data } = await getPdf(contentId.value)
   images.value = data
 }
 

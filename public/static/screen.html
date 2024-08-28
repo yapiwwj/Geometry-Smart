@@ -11,7 +11,8 @@
         padding: 0;
       }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script> -->
+    <script src="../javascript/p5/p5.js"></script>
   </head>
   <body>
     <script>
@@ -22,14 +23,14 @@
       let maxTraces = 2000
       let particleSize = 10
       let traceSize = 3
-      let traceLength = 15 // Number of frames before trace disappears (50% faster, originally 30)
-      let maxConnections = 4 // Maximum number of connections for each particle
+      let traceLength = 15 
+      let maxConnections = 4 
       let maxLifespan = 120
       let maxDistance = 100
 
-      let startParticles = 30 // number of starting particles
+      let startParticles = 30 
       let inactivityTimer
-      let inactivityDuration = 4500 // 3.5 seconds
+      let inactivityDuration = 4500 
       let showInactivityMessage = false
 
       function setup() {
@@ -39,7 +40,6 @@
         traces = []
         splines = []
         maxDistance = windowWidth / 12
-        // Add particles to start with
         for (let i = 0; i < startParticles; i++) {
           particles.push(new Particle(random(width), random(height)))
         }
@@ -68,7 +68,6 @@
           }
         }
 
-        // Update and display splines
         for (let i = splines.length - 1; i >= 0; i--) {
           let s = splines[i]
           s.update()
@@ -78,7 +77,6 @@
           }
         }
 
-        // Connect particles with splines
         connectParticles()
 
         fill(90)
@@ -86,25 +84,22 @@
         textAlign(RIGHT)
         textSize(13)
 
-        // Check for inactivity
         if (particles.length == 0 && millis() - inactivityTimer > inactivityDuration) {
           showInactivityMessage = true
         }
       }
 
       function connectParticles() {
-        splines = [] // Clear existing splines
+        splines = [] 
 
         for (let i = 0; i < particles.length; i++) {
           let p1 = particles[i]
-          let connectedCount = 0 // Number of connections for the current particle
+          let connectedCount = 0 
 
           for (let j = 0; j < particles.length; j++) {
             if (i !== j && connectedCount < maxConnections) {
-              // Avoid self-connection and exceeding maximum connections
               let p2 = particles[j]
               if (dist(p1.x, p1.y, p2.x, p2.y) < maxDistance) {
-                // Connect if particles are close enough
                 splines.push(new Spline(p1.x, p1.y, p2.x, p2.y))
                 connectedCount++
               }
@@ -117,20 +112,20 @@
         if (particles.length < maxParticles) {
           particles.push(new Particle(mouseX, mouseY))
         }
-        inactivityTimer = millis() // Reset inactivity timer
-        showInactivityMessage = false // Hide inactivity message
+        inactivityTimer = millis() 
+        showInactivityMessage = false 
       }
 
       class Particle {
         constructor(x, y, isTrace = false) {
           this.x = x
           this.y = y
-          this.dx = random(-1, 1) * 1.5 // Increase speed by 50%
-          this.dy = random(-1, 1) * 1.5 // Increase speed by 50%
-          this.lifespan = isTrace ? traceLength : maxLifespan // 60 frames per second * 1 second (50% faster, originally 120)
+          this.dx = random(-1, 1) * 1.5 
+          this.dy = random(-1, 1) * 1.5 
+          this.lifespan = isTrace ? traceLength : maxLifespan 
           this.size = isTrace ? traceSize : particleSize
           this.isTrace = isTrace
-          this.creationTime = frameCount // Record creation time
+          this.creationTime = frameCount 
         }
 
         update() {
@@ -149,7 +144,7 @@
             }
           }
           if (frameCount - this.creationTime >= this.lifespan) {
-            this.size = 0 // Remove particle after lifespan is over
+            this.size = 0 
           }
         }
 
@@ -174,11 +169,9 @@
         }
 
         update() {
-          // Spline does not change over time
         }
 
         isFinished() {
-          // Spline never finishes
           return false
         }
 
