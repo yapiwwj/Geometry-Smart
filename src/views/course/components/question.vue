@@ -18,7 +18,6 @@ const getTest = async () => {
   const {
     data: { done, question }
   } = await getTestContents(JSON.stringify(data_get))
-  console.log(done,question)
   doneValue.value = done
   questionList.value = JSON.parse(question)
 

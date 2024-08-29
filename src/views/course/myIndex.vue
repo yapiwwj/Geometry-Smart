@@ -6,12 +6,12 @@ import { DataLine, Reading } from '@element-plus/icons-vue'
 const router = useRouter()
 
 const directory = ref([
-  { id: 0, title: '第一节 认识几何体', url: '/course/course1' },
-  { id: 1, title: '第二节 表面积与体积', url: '/course/course2' },
-  { id: 2, title: '第三节 性质与定理', url: '/course/course3' },
-  { id: 3, title: '第四节 平面角与二面角', url: '/course/course4' },
-  { id: 4, title: '第五节 向量几何计算', url: '/course/course5' },
-  { id: 5, title: '第六节 立体几何综合', url: '/course/course6' }
+  { id: 0, title: '第一节 认识几何体', url: '/course/course' },
+  { id: 1, title: '第二节 表面积与体积', url: '/course/course' },
+  { id: 2, title: '第三节 性质与定理', url: '/course/course' },
+  { id: 3, title: '第四节 平面角与二面角', url: '/course/course' },
+  { id: 4, title: '第五节 向量几何计算', url: '/course/course' },
+  { id: 5, title: '第六节 立体几何综合', url: '/course/course' }
 ])
 
 const handle = (id: number) => {

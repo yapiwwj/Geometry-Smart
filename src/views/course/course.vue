@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick, computed } from 'vue'
+import { ref, onMounted, nextTick, computed ,watch} from 'vue'
 import dragResize from '../../components/dragResize.vue'
 import MathJax from '@/utils/mathjax.ts'
 import { useTipsStore } from '@/stores/index'
@@ -78,7 +78,7 @@ import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
 import Question from '@/views/course/components/question.vue'
 import { ArrowLeftBold, ArrowRightBold } from '@element-plus/icons-vue'
 
-//切换图片
+// 切换图片
 const images = ref([])
 
 const currentIndex = ref(0)
@@ -97,17 +97,31 @@ const nextImage = () => {
   }
 }
 
-const getPDFResponse = async () => {
-  const { data } = await getPdf(contentId.value)
-  images.value = data
+const loadCourseData = async () => {
+  const { data: { content, init } } = await getCourseContents(contentId.value)
+  tipsStore.handleContent(content, init)
+
+  const pdfResponse = await getPdf(contentId.value)
+  images.value = pdfResponse.data
+
+  await nextTick(() => {
+    if (MathJax.isMathjaxConfig) {
+      MathJax.initMathjaxConfig()
+    }
+    MathJax.MathQueue()
+  })
 }
 
 const tipsStore = useTipsStore()
 const { content, isTipShowArrayList } = storeToRefs(tipsStore)
 const route = useRoute()
 
-const contentId = ref()
-contentId.value = route.query.id
+const contentId = ref(route.query.id)
+watch(() => route.query.id, (newId) => {
+  contentId.value = newId
+  console.log('Updated contentId:', contentId.value)
+  loadCourseData() // 每次 contentId 更新时重新加载数据
+})
 
 const popTip = async (e) => {
   const target = e.target
@@ -139,21 +153,11 @@ const handleMouseUp = () => {
   }
 }
 
-onMounted(async () => {
-  const {
-    data: { content, init }
-  } = await getCourseContents(contentId.value)
-  tipsStore.handleContent(content, init)
-
-  await nextTick(() => {
-    if (MathJax.isMathjaxConfig) {
-      MathJax.initMathjaxConfig()
-    }
-    MathJax.MathQueue()
-  })
-  await getPDFResponse()
+onMounted(() => {
+  loadCourseData()
 })
 </script>
+
 
 <style lang="scss" scoped>
 @import url('../../styles/cource/course1.scss');

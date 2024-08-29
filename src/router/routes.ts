@@ -33,31 +33,11 @@ export const constantRoute = [
         path: '/course',
         component: () => import('../views/course/myIndex.vue'),
         name: 'course',
-        redirect: '/course/course1?id=0',
+        redirect: '/course/course?id=0',
         children: [
           {
-            path: '/course/course1',
-            component: () => import('../views/course/course1.vue')
-          },
-          {
-            path: '/course/course2',
-            component: () => import('../views/course/course2.vue')
-          },
-          {
-            path: '/course/course3',
-            component: () => import('../views/course/course3.vue')
-          },
-          {
-            path: '/course/course4',
-            component: () => import('../views/course/course4.vue')
-          },
-          {
-            path: '/course/course5',
-            component: () => import('../views/course/course5.vue')
-          },
-          {
-            path: '/course/course6',
-            component: () => import('../views/course/course6.vue')
+            path: '/course/course',
+            component: () => import('../views/course/course.vue')
           },
           {
             path: '/course/online-class',
