@@ -1,108 +1,115 @@
-<div>
-          <h3>&emsp;&emsp;一、平面角</h3>
-          <p>
-            &emsp;&emsp;&emsp;1.&emsp;<strong>定义：</strong>平面角是平面内两条射线与其公共端点组成的图形。这两条射线称为角的边，公共端点称为角的顶点。平面角的大小通常用“度”或“弧度”来衡量。
-          </p>
-          <p
-            style="
+        <div>
+            <h3>&emsp;&emsp;一、平面角</h3>
+            <p>
+              &emsp;&emsp;&emsp;1.&emsp;<strong>定义：</strong>平面角是平面内两条射线与其公共端点组成的图形。这两条射线称为角的边，公共端点称为角的顶点。平面角的大小通常用“度”或“弧度”来衡量。
+            </p>
+            <p
+              style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
               "
-          >
-            <img src="/content/course4/1.png" alt="" style="width: 300px" />
-            ∠AOB即为平面角
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;2.&emsp;<strong>表示方法：</strong></p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）可以用三个大写字母表示，如角∠ABC，其中A是顶点，BC是角的两边。
-          </p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2）也可以用一个小写希腊字母（如α, β, γ等）来表示。
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;3.&emsp; <strong>度量单位：</strong></p>
-          <p>&emsp;&emsp;&emsp;&emsp;&emsp;（1）<strong>度：</strong>一个完整的圆周角是360°。</p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2）<strong>弧度：</strong>一个完整的圆周角是2π弧度。
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;4.&emsp;<strong>转换公式：</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）1° ＝ <span>\[ \frac{180}{\pi} \]</span>弧度
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）1弧度 ＝ <span>\[ \frac{180^\circ}{\pi} \]</span>
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;5.&emsp;<strong>性质：</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）平面角具有可加性，即若两个角相邻，则它们之和等于这两个角合并后的大角。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2）平面角的大小与边的长短无关，只与边之间的夹角有关。
-          </p>
-          <br />
-          <h3>&emsp;&emsp;二、二面角</h3>
-          <br />
-          <p>
-            &emsp;&emsp;&emsp;1.&emsp;
-            <strong>定义：</strong
-            >二面角是从一条直线出发的两个半平面所组成的图形，这条直线称为二面角的棱，这两个半平面称为二面角的面。二面角的大小用它的平面角来度量，平面角是棱上任意一点在两个半平面内的射影所夹的角。
-          </p>
-          <p
-            style="
+            >
+              <img src="/content/course4/1.png" alt="" style="width: 300px" />
+              ∠AOB即为平面角
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;2.&emsp;<strong>表示方法：</strong></p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）可以用三个大写字母表示，如角∠ABC，其中A是顶点，BC是角的两边。
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2）也可以用一个小写希腊字母（如α, β, γ等）来表示。
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;3.&emsp; <strong>度量单位：</strong></p>
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;（1）<strong>度：</strong>一个完整的圆周角是360°。</p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2）<strong>弧度：</strong>一个完整的圆周角是2π弧度。
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;4.&emsp;<strong>转换公式：</strong></p>
+<!--            <p style="display: flex; align-items: center">-->
+<!--              &emsp;&emsp;&emsp;&emsp;&emsp;（1）1° ＝ <span>\[ \frac{180}{\pi} \]</span>弧度-->
+<!--            </p>-->
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）<span><img src="/content/course4/m1.png" alt=""></span>
+            </p>
+<!--            <p style="display: flex; align-items: center">-->
+<!--              &emsp;&emsp;&emsp;&emsp;&emsp;（2）1弧度 ＝ <span>\[ \frac{180^\circ}{\pi} \]</span>-->
+<!--            </p>-->
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）<span><img src="/content/course4/m2.png" alt=""></span>
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;5.&emsp;<strong>性质：</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）平面角具有可加性，即若两个角相邻，则它们之和等于这两个角合并后的大角。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2）平面角的大小与边的长短无关，只与边之间的夹角有关。
+            </p>
+            <br />
+            <h3>&emsp;&emsp;二、二面角</h3>
+            <br />
+            <p>
+              &emsp;&emsp;&emsp;1.&emsp;
+              <strong>定义：</strong
+              >二面角是从一条直线出发的两个半平面所组成的图形，这条直线称为二面角的棱，这两个半平面称为二面角的面。二面角的大小用它的平面角来度量，平面角是棱上任意一点在两个半平面内的射影所夹的角。
+            </p>
+            <p
+              style="
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
               "
-          >
-            <img src="/content/course4/2.png" alt="" style="width: 300px" />
-            ∠AOB即为二面角
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;2.&emsp; <strong>表示方法：</strong></p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）通常用两个半平面和棱来表示，如二面角α - l −
-            β，其中l是棱，α和β是两个半平面。
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;3.&emsp; <strong>度量：</strong></p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）二面角的大小通过其平面角来度量，平面角的大小可以是锐角、直角、钝角或平角。
-          </p>
-          <p>&emsp;&emsp;&emsp;&emsp;&emsp;（2）也可以用角度或弧度来表示。</p>
-          <br />
-          <p>&emsp;&emsp;&emsp;4.&emsp; <strong>性质：</strong></p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）二面角的平面角是唯一的，与棱上取哪一点作为射影的顶点无关。
-          </p>
-          <p>&emsp;&emsp;&emsp;&emsp;&emsp;（2）两个二面角相等当且仅当它们的平面角相等。</p>
-          <br />
-          <p>&emsp;&emsp;&emsp;5.&emsp; <strong>计算二面角的平面角：</strong></p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）常用的方法有定义法、<span
-            data-id="15"
-            style="color: #63b0ff; cursor: pointer"
-          >三垂线定理法</span
-          >、向量法等。
-          </p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2）在立体几何中，经常通过构造直角三角形，利用三角函数来计算二面角的平面角。
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;6.&emsp; <strong>性质</strong> <span>（向量法）：</span></p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）设两个半平面的法向量分别为<span
-          >\( n_1 \) 和 \( n_2 \)</span
-          >，则二面角的平面角θ（或其补角）的余弦值为
-            <span>\[ \cos \theta = \frac{n_1 \cdot n_2}{||n_1|| \cdot ||n_2||} \]</span>
-          </p>
-          <p>
-            &emsp;&emsp;&emsp;&emsp;&emsp;（注意：这里得到的θ可能是二面角的平面角，也可能是其补角，具体取决于法向量的方向。）
-          </p>
-          <br />
-        </div>
+            >
+              <img src="/content/course4/2.png" alt="" style="width: 300px" />
+              ∠AOB即为二面角
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;2.&emsp; <strong>表示方法：</strong></p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）通常用两个半平面和棱来表示，如二面角α - l −
+              β，其中l是棱，α和β是两个半平面。
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;3.&emsp; <strong>度量：</strong></p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）二面角的大小通过其平面角来度量，平面角的大小可以是锐角、直角、钝角或平角。
+            </p>
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;（2）也可以用角度或弧度来表示。</p>
+            <br />
+            <p>&emsp;&emsp;&emsp;4.&emsp; <strong>性质：</strong></p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）二面角的平面角是唯一的，与棱上取哪一点作为射影的顶点无关。
+            </p>
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;（2）两个二面角相等当且仅当它们的平面角相等。</p>
+            <br />
+            <p>&emsp;&emsp;&emsp;5.&emsp; <strong>计算二面角的平面角：</strong></p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）常用的方法有定义法、<span
+              data-id="15"
+              style="color: #63b0ff; cursor: pointer"
+            >三垂线定理法</span
+            >、向量法等。
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2）在立体几何中，经常通过构造直角三角形，利用三角函数来计算二面角的平面角。
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;6.&emsp; <strong>性质</strong> <span>（向量法）：</span></p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）设两个半平面的法向量分别为<span
+            >n₁ 和 n₂</span
+            >，则二面角的平面角θ（或其补角）的余弦值为
+<!--              <span>\[ \cos \theta = \frac{n_1 \cdot n_2}{||n_1|| \cdot ||n_2||} \]</span>-->
+              <span style="display: flex;justify-content: center"><img src="/content/course4/m3.png" alt=""></span>
+            </p>
+            <p>
+              &emsp;&emsp;&emsp;&emsp;&emsp;（注意：这里得到的θ可能是二面角的平面角，也可能是其补角，具体取决于法向量的方向。）
+            </p>
+            <br />
+          </div>

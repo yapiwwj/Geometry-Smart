@@ -16,7 +16,7 @@ const directory = ref([
 
 const handle = (id: number) => {
   activeId.value = id
-  router.push({ path: '/course/online-class' })
+  id == 6 ? router.push('/course/online-class') : router.push('/course/advanced')
 }
 
 const activeId = ref<number>(0)
@@ -47,7 +47,11 @@ const toContent = (url: string, id: number) => {
             <el-icon size="20"><DataLine /></el-icon>
             <span>在线课堂</span>
           </li>
-          <li class="test" :style="{ background: activeId === 7 ? '#daecf6' : '' }">
+          <li
+          class="onlineClass"
+            @click="handle(7)"
+            :style="{ background: activeId === 7 ? '#daecf6' : '' }"
+          >
             <el-icon size="20"><Reading /></el-icon>
             <span>进阶测试</span>
           </li>

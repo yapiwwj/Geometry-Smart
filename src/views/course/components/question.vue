@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref,watch } from 'vue'
 import { getTestContents, judgeQuestion } from '@/api/course'
 
 const props = defineProps(['id'])
@@ -11,7 +11,6 @@ const answerValue = ref<string[]>([])
 const lastSheet = ref<any[]>([])
 const alphabet = ref('BB')
 const getTest = async () => {
-
   const data_get = {
     id: props.id,
     type: 0
@@ -19,6 +18,7 @@ const getTest = async () => {
   const {
     data: { done, question }
   } = await getTestContents(JSON.stringify(data_get))
+  console.log(done,question)
   doneValue.value = done
   questionList.value = JSON.parse(question)
 
@@ -37,14 +37,6 @@ const getTest = async () => {
     answerValue.value = answer!.split('') //['B','B']
     lastSheet.value = JSON.parse(sheet as any)
 
-
-    // const judge_data = {
-    //   id: props.id,
-    //   type: 0,
-    //   sheet: JSON.stringify(lastSheet.value)
-    // }
-    // const {data:{ans}} = await judgeQuestion(JSON.stringify(judge_data))
-    // alphabet.value=ans
   }
 
 }
@@ -97,6 +89,10 @@ const submit = async () => {
   lastSheet.value = res.data.judge
   await getTest()
 }
+watch(() => props.id, () => {
+  getTest()
+})
+
 onMounted(() => {
   // lastSheet()
   getTest()

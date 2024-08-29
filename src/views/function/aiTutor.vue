@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, nextTick, onMounted } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import { useAIStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { getAIChat } from '@/api/function'
@@ -11,24 +11,30 @@ const { quickQuestion, dialogList, recommendQuestionList } = storeToRefs(aiStore
 const userInputValue = ref<string>('')
 const gptPartialResponse = ref<string>('')
 
+//流式数据读取
+const processStreamedResponse = async (response: string) => {
+  gptPartialResponse.value = ''
+  aiStore.handleAddMessage('gpt', gptPartialResponse.value)
+
+  for (let i = 0; i < response.length; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 50))
+    gptPartialResponse.value += response[i]
+    await nextTick()
+    aiStore.dialogList[aiStore.dialogList.length - 1].text = gptPartialResponse.value
+  }
+}
+
 const sendInfo = async () => {
-  if (!userInputValue.value.trim()) return
-  const content = userInputValue.value
+  const content = userInputValue.value.trim()
+  if (!content) return
+
   aiStore.handleAddMessage('user', content)
   userInputValue.value = ''
 
   const res = await getAIChat(content)
   const gptResponse = res.data
-  gptPartialResponse.value = ''
-  aiStore.handleAddMessage('gpt', gptPartialResponse.value)
 
-  //流式数据显示
-  for (let i = 0; i < gptResponse.length; i++) {
-    await new Promise((resolve) => setTimeout(resolve, 50))
-    gptPartialResponse.value += gptResponse[i]
-    await nextTick()
-    aiStore.dialogList[aiStore.dialogList.length - 1].text = gptPartialResponse.value
-  }
+  await processStreamedResponse(gptResponse)
 }
 
 // 放大显示
@@ -39,7 +45,17 @@ const isFrameShow = ref(false)
 const show = ()=>{
   setInterval(()=>{
     isFrameShow.value = true
-  },20000)
+  },10000)
+}
+
+//
+const clickSend = async (e: any) => {
+  const content = e.target.innerHTML
+  aiStore.handleAddMessage('user', content)
+  userInputValue.value = ''
+
+  const { data } = await getAIChat(content)
+  await processStreamedResponse(data)
 }
 
 onMounted(()=>{
@@ -74,7 +90,7 @@ onMounted(()=>{
         </el-scrollbar>
         <div class="footer">
           <ul class="top">
-            <li v-for="i in quickQuestion" :key="i.id">{{ i.question }}</li>
+            <li ref="quickQuestionLi" v-for="i in quickQuestion" :key="i.id" @click="clickSend">{{ i.question }}</li>
           </ul>
           <ul class="bottom">
             <li>
@@ -105,8 +121,8 @@ onMounted(()=>{
         <p>推荐问题</p>
         <el-scrollbar height="200px">
           <ul class="recommend-question-list">
-            <li v-for="i in recommendQuestionList" :key="i.id">
-              <span>{{ i.question }}</span>
+            <li ref="recommondLi" v-for="i in recommendQuestionList" :key="i.id" >
+              <span @click="clickSend">{{ i.question }}</span>
               <div class="typebox">
                 <img src="../../assets/icons/alert.svg" alt="" />
                 <span>近日错题</span>
@@ -117,7 +133,7 @@ onMounted(()=>{
       </li>
       <li class="three-model">
         <p>立体可视化</p>
-        <iframe v-if="isFrameShow" src="/static/model1.html" frameborder="0" scrolling="no"></iframe>
+        <iframe v-if="false" src="/static/model1.html" frameborder="0" scrolling="no"></iframe>
         <!-- <iframe
           src="http://121.40.154.188:8080/courseware/img/7b011569-fd03-40e3-8937-5206806cf260.html"
           frameborder="0"

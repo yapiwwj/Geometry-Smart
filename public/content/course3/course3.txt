@@ -1,149 +1,173 @@
-        <div>
-          <h3>&emsp;&emsp;一、性质定理</h3>
-          <p>&emsp;&emsp;&emsp;1.&emsp;<strong>直线与平面平行的性质定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong
-            >一条直线与一个平面平行，则过这条直线的任一平面与此平面的交线与该直线平行。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span
-              >\[ a \parallel \alpha, \quad a \subset \beta, \quad \alpha \cap \beta = b \quad
-              \Rightarrow \quad a \parallel b \]</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/1.png" alt="" />
-          </p>
-          <br />
-          <br />
-          <p>&emsp;&emsp;&emsp;2.&emsp; <strong>平面与平面平行的性质定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong>如果两个平行平面同时和第三个平面相交，那么它们的交线平行。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span
-              >\[ \alpha \parallel \beta, \quad \alpha \cap \gamma = a, \quad \beta \cap \gamma = b
-              \quad \Rightarrow \quad a \parallel b \]</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/2.png" alt="" />
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;3.&emsp; <strong>直线与平面垂直的性质定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong>垂直于同一平面的两条直线平行。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span>
-              \( a \perp \alpha, \quad b \perp \alpha \quad \Rightarrow \quad a \parallel b \)</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/3.png" alt="" />
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;4.&emsp; <strong>平面与平面垂直的性质定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong
-            >对于两个相互乘直的平面，在一个平面内垂直交线的直线垂直另一平面。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span
-              >\( \alpha \perp \beta, \quad \alpha \cap \beta = m, \quad a \subset \beta, \quad a
-              \perp m \quad \Rightarrow \quad a \perp \alpha \)</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/4.png" alt="" />
-          </p>
-          <br />
-          <h3>&emsp;&emsp;二、判定定理</h3>
-          <p>&emsp;&emsp;&emsp;1.&emsp;<strong>直线与平面平行的判定定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong
-            >平面外一条直线与此平面内的一条直线平行，则该直线与此平面平行。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span
-              >\( a \not\subset \alpha, \quad b \subset \alpha, \quad a \parallel b \quad
-              \Rightarrow \quad a \parallel \alpha \)</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/5.png" alt="" />
-          </p>
-          <br />
-          <br />
-          <p>&emsp;&emsp;&emsp;2.&emsp; <strong>平面与平面平行的判定定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong>一个平面内的两条相交直线与另一个平面平行，则这两个平面平行。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span
-              >\( a \subset \beta, \quad b \subset \beta, \quad a \cap b = P, \quad a \parallel
-              \alpha, \quad b \parallel \alpha \quad \Rightarrow \quad \beta \parallel \alpha
-              \)</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/6.png" alt="" />
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;3.&emsp; <strong>直线与平面垂直的判定定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong
-            >一条直线与一个平面内的两条相交直线都垂直，则该直线与此平面垂直。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span>
-              \( c \perp a, \quad c \perp b, \quad a \cap b = P, \quad a \subset \alpha, \quad b
-              \subset \alpha \quad \Rightarrow \quad c \perp \alpha \)</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/7.png" alt="" />
-          </p>
-          <br />
-          <p>&emsp;&emsp;&emsp;4.&emsp; <strong>平面与平面垂直的判定定理</strong></p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（1）
-            <strong>文字语言：</strong>一个平面过另一个平面的垂线，则这两个平面垂直。
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
-            <span
-              >\( a \perp \alpha, \quad a \subset \beta \quad \Rightarrow \quad \beta \perp \alpha
-              \)</span
-            >
-          </p>
-          <p style="display: flex; align-items: center">
-            &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
-            <img src="/content/course3/8.png" alt="" />
-          </p>
-          <br />
-          <h3>
-            &emsp;&emsp;三、<span data-id="14" style="color: #63b0ff; cursor: pointer">总结</span>
-          </h3>
-        </div>
+      <div>
+            <h3>&emsp;&emsp;一、性质定理</h3>
+            <p>&emsp;&emsp;&emsp;1.&emsp;<strong>直线与平面平行的性质定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong
+              >一条直线与一个平面平行，则过这条直线的任一平面与此平面的交线与该直线平行。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span-->
+<!--              >\[ a \parallel \alpha, \quad a \subset \beta, \quad \alpha \cap \beta = b \quad-->
+<!--              \Rightarrow \quad a \parallel b \]</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m1.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/1.png" alt="" />
+            </p>
+            <br />
+            <br />
+            <p>&emsp;&emsp;&emsp;2.&emsp; <strong>平面与平面平行的性质定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong>如果两个平行平面同时和第三个平面相交，那么它们的交线平行。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span-->
+<!--              >\[ \alpha \parallel \beta, \quad \alpha \cap \gamma = a, \quad \beta \cap \gamma = b-->
+<!--              \quad \Rightarrow \quad a \parallel b \]</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m2.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/2.png" alt="" />
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;3.&emsp; <strong>直线与平面垂直的性质定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong>垂直于同一平面的两条直线平行。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span>-->
+<!--              \( a \perp \alpha, \quad b \perp \alpha \quad \Rightarrow \quad a \parallel b \)</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m3.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/3.png" alt="" />
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;4.&emsp; <strong>平面与平面垂直的性质定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong
+              >对于两个相互乘直的平面，在一个平面内垂直交线的直线垂直另一平面。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span-->
+<!--              >\( \alpha \perp \beta, \quad \alpha \cap \beta = m, \quad a \subset \beta, \quad a-->
+<!--              \perp m \quad \Rightarrow \quad a \perp \alpha \)</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m4.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/4.png" alt="" />
+            </p>
+            <br />
+            <h3>&emsp;&emsp;二、判定定理</h3>
+            <p>&emsp;&emsp;&emsp;1.&emsp;<strong>直线与平面平行的判定定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong
+              >平面外一条直线与此平面内的一条直线平行，则该直线与此平面平行。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span-->
+<!--              >\( a \not\subset \alpha, \quad b \subset \alpha, \quad a \parallel b \quad-->
+<!--              \Rightarrow \quad a \parallel \alpha \)</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m5.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/5.png" alt="" />
+            </p>
+            <br />
+            <br />
+            <p>&emsp;&emsp;&emsp;2.&emsp; <strong>平面与平面平行的判定定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong>一个平面内的两条相交直线与另一个平面平行，则这两个平面平行。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span-->
+<!--              >\( a \subset \beta, \quad b \subset \beta, \quad a \cap b = P, \quad a \parallel-->
+<!--              \alpha, \quad b \parallel \alpha \quad \Rightarrow \quad \beta \parallel \alpha-->
+<!--              \)</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m6.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/6.png" alt="" />
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;3.&emsp; <strong>直线与平面垂直的判定定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong
+              >一条直线与一个平面内的两条相交直线都垂直，则该直线与此平面垂直。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span>-->
+<!--              \( c \perp a, \quad c \perp b, \quad a \cap b = P, \quad a \subset \alpha, \quad b-->
+<!--              \subset \alpha \quad \Rightarrow \quad c \perp \alpha \)</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m7.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/7.png" alt="" />
+            </p>
+            <br />
+            <p>&emsp;&emsp;&emsp;4.&emsp; <strong>平面与平面垂直的判定定理</strong></p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（1）
+              <strong>文字语言：</strong>一个平面过另一个平面的垂线，则这两个平面垂直。
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（2） <strong>符号语言：</strong>
+<!--              <span-->
+<!--              >\( a \perp \alpha, \quad a \subset \beta \quad \Rightarrow \quad \beta \perp \alpha-->
+<!--              \)</span-->
+<!--              >-->
+              <span style="display: flex; align-items: center">
+                <img src="/content/course3/m8.png" alt="">
+              </span>
+            </p>
+            <p style="display: flex; align-items: center">
+              &emsp;&emsp;&emsp;&emsp;&emsp;（3） <strong>图形语言：</strong>
+              <img src="/content/course3/8.png" alt="" />
+            </p>
+            <br />
+            <h3>
+              &emsp;&emsp;三、<span data-id="14" style="color: #63b0ff; cursor: pointer">总结</span>
+            </h3>
+          </div>

@@ -28,3 +28,24 @@ export type Radar_Data_Y = number[]
  */
 export type Line_Data_X = string[][]
 export type Line_Data_Y = number[]
+
+/**
+ * aside
+ */
+export type MenuItem ={
+  index: number;
+  title: string;
+  className: string;
+  path: string;
+  url?: () => Promise<{ default: string }>;
+}
+
+/**
+ * online-class
+ */
+interface ButtonItem {
+  id: number;
+  name: string;
+  icon: string;
+  url: () => Promise<{ default: string }>;
+}

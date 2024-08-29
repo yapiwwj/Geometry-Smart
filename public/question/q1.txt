@@ -1,3 +1,5 @@
-[{"id":0,"img":"/question/course1Q1.png","A":"A. 2个","B":"B. 3个","C":"C. 4个","D":"D. 5个","name":"q1"},{"id":1,"img":"/question/course1Q2.png","A":"A. 足球","B":"B. 易拉罐","C":"C. 吊锤","D":"D. 茶杯","name":"q2"}]
+[[false,true,false,false],[false,true,false,false]]
 
 根据棱柱的定义，可知1、2、6为棱柱，故选B | 根据圆柱的定义，可知易拉罐为正确选项，故选B
+
+[{"id":0,"img":"/question/course1Q1.png","A":"A. 2个","B":"B. 3个","C":"C. 4个","D":"D. 5个","name":"q1"},{"id":1,"img":"/question/course1Q2.png","A":"A. 足球","B":"B. 易拉罐","C":"C. 吊锤","D":"D. 茶杯","name":"q2"}]

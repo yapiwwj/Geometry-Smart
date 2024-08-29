@@ -23,6 +23,7 @@
     <video id="remoteVideo" autoplay></video>
     <script>
       const ws = new WebSocket('ws://121.40.154.188:10002/ws')
+      // const ws = new WebSocket('ws://localhost:10002/ws')
       const token = localStorage.getItem('token')
       let selectedToken = token
       let peerConnection

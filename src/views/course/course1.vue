@@ -54,7 +54,7 @@
           <ul>
             <li><h3>知识小测</h3></li>
           </ul>
-          <question1 :id="contentId" />
+          <Question :id="contentId" />
         </div>
       </div>
     </li>
@@ -75,7 +75,7 @@ import { storeToRefs } from 'pinia'
 import { getCourseContents, getTipContents, updateTipContents, getPdf } from '@/api/course/index.ts'
 import { useRoute } from 'vue-router'
 import HighlightToolbar from '@/views/course/components/HighlightToolbar.vue'
-import Question1 from '@/views/course/components/question.vue'
+import Question from '@/views/course/components/question.vue'
 import { ArrowLeftBold, ArrowRightBold } from '@element-plus/icons-vue'
 
 //切换图片

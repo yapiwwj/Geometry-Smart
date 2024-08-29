@@ -1,28 +1,30 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import type{MenuItem} from '@/type/teacher'
 
 const router = useRouter()
 
-const menuList = ref([
+const menuList = ref<MenuItem[][]>([
   [
-    { index: 0, title: '学情监控', className: 'iconfont icon-eye', path: '/teacher/watch' },
+    { index: 0, title: '学情监控', className: 'iconfont icon-eye', path: '/teacher/watch' ,url: ()=>import('@/assets/icons/eye.svg')},
     {
       index: 1,
       title: '组卷中心',
       className: 'iconfont icon-shougongzujuan',
-      path: '/teacher/exam-center'
+      path: '/teacher/exam-center',
+      url: ()=>import('@/assets/icons/shougongzujuan.svg')
     },
-    { index: 2, title: '在线课堂', className: 'iconfont icon-zaixianketang', path: '/teacher/online-class' },
-    { index: 3, title: '教学课件', className: 'iconfont icon-kejian', path: '/teacher/teach' },
-    { index: 4, title: '消息中心', className: 'iconfont icon-xiaoxi', path: '/teacher/news' },
-    { index: 5, title: '任务发布', className: 'iconfont icon-renwu', path: '/teacher/publish' },
-    { index: 6, title: '反馈收集', className: 'iconfont icon-radio', path: '/teacher/feedback' },
-    { index: 7, title: '发布考勤', className: 'iconfont icon-tag', path: '/teacher/attendance' }
+    { index: 2, title: '在线课堂', className: 'iconfont icon-zaixianketang', path: '/teacher/online-class',url: ()=>import('@/assets/icons/zaixianketang.svg')},
+    { index: 3, title: '教学课件', className: 'iconfont icon-kejian', path: '/teacher/teach',url: ()=>import('@/assets/icons/kejian.svg') },
+    { index: 4, title: '消息中心', className: 'iconfont icon-xiaoxi', path: '/teacher/news',url: ()=>import('@/assets/icons/new.svg') },
+    { index: 5, title: '任务发布', className: 'iconfont icon-renwu', path: '/teacher/publish',url: ()=>import('@/assets/icons/renwu.svg') },
+    { index: 6, title: '反馈收集', className: 'iconfont icon-radio', path: '/teacher/feedback' ,url: ()=>import('@/assets/icons/radio.svg')},
+    { index: 7, title: '发布考勤', className: 'iconfont icon-tag', path: '/teacher/attendance',url: ()=>import('@/assets/icons/tag.svg') }
   ],
   [
-    { index: 8, title: '使用指南', className: 'iconfont icon-map', path: '/teacher/guide' },
-    { index: 9, title: '账号设置', className: 'iconfont icon-shezhi', path: '/teacher/setting' }
+    { index: 8, title: '使用指南', className: 'iconfont icon-map', path: '/teacher/guide',url: ()=>import('@/assets/icons/map.svg') },
+    { index: 9, title: '账号设置', className: 'iconfont icon-shezhi', path: '/teacher/setting' ,url: ()=>import('@/assets/icons/setting.svg')}
   ]
 ])
 const activeIndex = ref(0)
@@ -30,6 +32,18 @@ const handleActive = (id: number, path: string) => {
   activeIndex.value = id
   router.push(path)
 }
+
+const imageUrls = ref<Record<number, string>>({});
+onMounted(async () => {
+  const allMenuItems = menuList.value.flat();
+  for (const item of allMenuItems) {
+    if (item.url) {
+      const module = await item.url();
+      imageUrls.value[item.index] = module.default;
+    }
+  }
+});
+
 </script>
 
 <template>
@@ -45,13 +59,15 @@ const handleActive = (id: number, path: string) => {
         :key="index"
         @click="handleActive(item.index, item.path)"
       >
-        <i :class="item.className"></i>
+<!--        <i :class="item.className"></i>-->
+        <img v-if="imageUrls[item.index]" :src="imageUrls[item.index]" alt="">
         <span>{{ item.title }}</span>
       </div>
     </li>
     <li class="bottom">
       <div v-for="(item, index) in menuList[1]" :key="index" @click="router.push(item.path)">
-        <i :class="item.className"></i>
+<!--        <i :class="item.className"></i>-->
+        <img v-if="imageUrls[item.index]" :src="imageUrls[item.index]" alt="">
         <span>{{ item.title }}</span>
       </div>
     </li>

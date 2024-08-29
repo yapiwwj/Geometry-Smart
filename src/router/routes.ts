@@ -62,6 +62,10 @@ export const constantRoute = [
           {
             path: '/course/online-class',
             component: () => import('../views/course/onlineClass.vue')
+          },
+          {
+            path: '/course/advanced',
+            component: () => import('../views/course/advanced.vue')
           }
         ]
       },

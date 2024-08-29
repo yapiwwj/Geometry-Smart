@@ -4,12 +4,12 @@
     {
       "path": "./tsconfig.node.json",
 //      "noImplicitAny": false,
-//      "allowJs": true
+      "allowJs": true
     },
     {
       "path": "./tsconfig.app.json",
 //      "noImplicitAny": false,
-//      "allowJs": true
+      "allowJs": true
     },
 
   ],
