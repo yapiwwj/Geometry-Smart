@@ -33,6 +33,16 @@
       let inactivityDuration = 4500 
       let showInactivityMessage = false
 
+      document.addEventListener('copy', event => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          event.preventDefault();
+          return navigator.clipboard.writeText('');
+        }
+      });
+      document.addEventListener('contextmenu', event => {
+        event.preventDefault();
+      });
+
       function setup() {
         createCanvas(windowWidth, windowHeight)
         background(0)
@@ -195,6 +205,7 @@
       function windowResized() {
         resizeCanvas(windowWidth, windowHeight)
       }
+
     </script>
   </body>
 </html>

@@ -69,29 +69,13 @@ onMounted(() => {
   <div class="transform-container">
     <ul>
       <li class="left">
-        <el-upload
-            v-if="!imgURL"
-            class="upload-demo"
-            drag
-            action="http://121.40.154.188:10001/courseware/chart/upload"
-            multiple
-            :on-success="handleSuccess"
-        >
-          <el-icon class="el-icon--upload">
-            <upload-filled/>
-          </el-icon>
-          <div class="el-upload__text">将文件拖放到此处 or <em>点击上传</em></div>
-          <template #tip>
-            <div class="el-upload__tip">小于 500KB 的 JPG/PNG 文件</div>
-          </template>
-        </el-upload>
 <!--        <el-upload-->
-<!--          v-if="!imgURL"-->
-<!--          class="upload-demo"-->
-<!--          drag-->
-<!--          action="http://localhost:10001/courseware/chart/upload"-->
-<!--          multiple-->
-<!--          :on-success="handleSuccess"-->
+<!--            v-if="!imgURL"-->
+<!--            class="upload-demo"-->
+<!--            drag-->
+<!--            action="http://121.40.154.188:10001/courseware/chart/upload"-->
+<!--            multiple-->
+<!--            :on-success="handleSuccess"-->
 <!--        >-->
 <!--          <el-icon class="el-icon&#45;&#45;upload">-->
 <!--            <upload-filled/>-->
@@ -101,6 +85,22 @@ onMounted(() => {
 <!--            <div class="el-upload__tip">小于 500KB 的 JPG/PNG 文件</div>-->
 <!--          </template>-->
 <!--        </el-upload>-->
+        <el-upload
+          v-if="!imgURL"
+          class="upload-demo"
+          drag
+          action="http://localhost:10001/courseware/chart/upload"
+          multiple
+          :on-success="handleSuccess"
+        >
+          <el-icon class="el-icon--upload">
+            <upload-filled/>
+          </el-icon>
+          <div class="el-upload__text">将文件拖放到此处 or <em>点击上传</em></div>
+          <template #tip>
+            <div class="el-upload__tip">小于 500KB 的 JPG/PNG 文件</div>
+          </template>
+        </el-upload>
         <img v-if="imgURL" :src="imgURL" alt=""/>
       </li>
     </ul>

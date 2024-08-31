@@ -35,9 +35,7 @@ const getTest = async () => {
     analysisValue.value = analysis!.split('|') //['test','test']
     answerValue.value = answer!.split('') //['B','B']
     lastSheet.value = JSON.parse(sheet as any)
-
   }
-
 }
 
 
@@ -93,7 +91,6 @@ watch(() => props.id, () => {
 })
 
 onMounted(() => {
-  // lastSheet()
   getTest()
 })
 </script>
@@ -112,6 +109,7 @@ onMounted(() => {
               :disabled="doneValue === 1"
               @click="select('A', i.id)"
             /><span>{{ i.A }}</span>
+            <br/>
             <input
               type="radio"
               :name="i.name"
@@ -119,6 +117,7 @@ onMounted(() => {
               :disabled="doneValue === 1"
               @click="select('B', i.id)"
             /><span>{{ i.B }}</span>
+            <br/>
             <input
               type="radio"
               :name="i.name"
@@ -126,6 +125,7 @@ onMounted(() => {
               :disabled="doneValue === 1"
               @click="select('C', i.id)"
             /><span>{{ i.C }}</span>
+            <br/>
             <input
               type="radio"
               :name="i.name"

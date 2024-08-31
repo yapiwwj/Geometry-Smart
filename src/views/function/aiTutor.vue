@@ -42,14 +42,17 @@ const drawer = ref(false)
 
 //视频测试暂用
 const isFrameShow = ref(false)
-const show = ()=>{
-  setInterval(()=>{
-    isFrameShow.value = true
-  },10000)
-}
 
 //
-const clickSend = async (e: any) => {
+const clickSend = async (type: string, e: any):Promise<void> => {
+  if (type === 'simple') {
+    isFrameShow.value = false
+  } else {
+    setInterval(() => {
+      isFrameShow.value = true
+    }, 10000) // 使用 setTimeout 而不是 setInterval
+  }
+
   const content = e.target.innerHTML
   aiStore.handleAddMessage('user', content)
   userInputValue.value = ''
@@ -59,7 +62,6 @@ const clickSend = async (e: any) => {
 }
 
 onMounted(()=>{
-  show()
 })
 </script>
 
@@ -90,7 +92,7 @@ onMounted(()=>{
         </el-scrollbar>
         <div class="footer">
           <ul class="top">
-            <li ref="quickQuestionLi" v-for="i in quickQuestion" :key="i.id" @click="clickSend">{{ i.question }}</li>
+            <li ref="quickQuestionLi" v-for="i in quickQuestion" :key="i.id" @click="clickSend('simple',$event)">{{ i.question }}</li>
           </ul>
           <ul class="bottom">
             <li>
@@ -122,7 +124,7 @@ onMounted(()=>{
         <el-scrollbar height="200px">
           <ul class="recommend-question-list">
             <li ref="recommondLi" v-for="i in recommendQuestionList" :key="i.id" >
-              <span @click="clickSend">{{ i.question }}</span>
+              <span @click="clickSend('difficult',$event)">{{ i.question }}</span>
               <div class="typebox">
                 <img src="../../assets/icons/alert.svg" alt="" />
                 <span>近日错题</span>
@@ -133,7 +135,7 @@ onMounted(()=>{
       </li>
       <li class="three-model">
         <p>立体可视化</p>
-        <iframe v-if="false" src="/static/model1.html" frameborder="0" scrolling="no"></iframe>
+        <iframe v-if="isFrameShow" src="/static/model1.html" frameborder="0" scrolling="no"></iframe>
         <!-- <iframe
           src="http://121.40.154.188:8080/courseware/img/7b011569-fd03-40e3-8937-5206806cf260.html"
           frameborder="0"
@@ -144,7 +146,7 @@ onMounted(()=>{
     </ul>
   </div>
   <el-drawer v-model="drawer" size="105%">
-    <iframe src="/static/model2.html" frameborder="0" scrolling="no"></iframe>
+    <iframe v-if="isFrameShow" src="/static/model2.html" frameborder="0" scrolling="no"></iframe>
     <!-- <iframe
       src="http://121.40.154.188:8080/courseware/img/30bc5738-2335-44c7-b789-b5e1b8511d1c.html"
       frameborder="0"
