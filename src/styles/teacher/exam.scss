@@ -30,19 +30,19 @@
         }
       }
     }
-    .fill{
-      section{
+    .fill {
+      section {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .fill-item-left{
+        .fill-item-left {
           width: 40%;
           margin: 20px 0 50px 0;
-          .el-button{
+          .el-button {
             margin: 10px;
           }
         }
-        .fill-item-right{
+        .fill-item-right {
           width: 60%;
         }
       }

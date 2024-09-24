@@ -8,3 +8,4 @@ export default pinia
 export * from './modules/tips'
 export * from './modules/AI'
 export * from './modules/knowCard'
+export * from './modules/echarts'

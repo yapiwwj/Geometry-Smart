@@ -19,7 +19,8 @@ enum API {
   CHANGE_CONTENT_POST_URL = '/courseware/data/knowledge',
   TEST_GET_URL = '/courseware/knowledge/test',
   TEST_JUDGE_GET_URL = '/courseware/knowledge/test/judge',
-  PDF_GET_URL = '/courseware/knowledge/img'
+  PDF_GET_URL = '/courseware/knowledge/img',
+  EXAM_POST_URL = '/courseware/knowledge/random/test',
 }
 
 export const getCourseContents = (id: number) =>
@@ -46,3 +47,9 @@ export const judgeQuestion = (data: string) =>
 
 export const getPdf = (id: number) =>
   request.post<number, GetPdfResponse>(`${API.PDF_GET_URL}?id=${id}`)
+
+// export const postExam = (size: number) =>
+//   request.post<number, any>(API.EXAM_POST_URL, size)
+
+export const postExam = (data: number) =>
+  request.post<number, any>(`${API.EXAM_POST_URL}?size=${data}`)

@@ -1,51 +1,68 @@
 <template>
-  <div id="myChart" :style="{ width: '100%', height: '300px' }"></div>
+  <div ref="chartDom" :style="{ width: '100%', height: '350px' }"></div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, getCurrentInstance } from 'vue'
-export default defineComponent({
-  setup() {
-    const { proxy } = getCurrentInstance() as any
-    // 配置建议写在 onMount 的外面
-    const option = {
-      radar: {
-        shape: 'circle',
-        indicator: [
-          { name: 'Sales', max: 6500 },
-          { name: 'Administration', max: 16000 },
-          { name: 'Information Technology', max: 30000 },
-          { name: 'Customer Support', max: 38000 },
-          { name: 'Development', max: 52000 },
-          { name: 'Marketing', max: 25000 }
-        ]
-      },
-      series: [
+<script lang="ts" setup>
+import { ref, onMounted, getCurrentInstance, watch } from 'vue'
+
+const props = defineProps(['indicator'])
+
+const { proxy } = getCurrentInstance() as any
+const chartDom = ref<HTMLElement | null>(null)
+
+const option = {
+  title: {
+    text: '全班平均高频错误知识点',
+    left: 'center',
+    top: '0%'
+  },
+  radar: {
+    shape: 'circle',
+    indicator: [
+      { name: '空间中的垂直关系', max: 10 },
+      { name: '空间向量', max: 10 },
+      { name: '平面角计算', max: 10 },
+      { name: '二面角计算', max: 10 },
+      { name: '几何体综合计算', max: 10 },
+      { name: '表面积计算', max: 10 }
+    ],
+    center: ['50%', '55%']
+  },
+  series: [
+    {
+      name: 'Budget vs spending',
+      type: 'radar',
+      data: [
         {
-          name: 'Budget vs spending',
-          type: 'radar',
-          data: [
-            {
-              value: [5000, 14000, 28000, 26000, 42000, 21000],
-              name: 'Actual Spending'
+          value: [8, 5, 7, 6, 5, 8],
+          name: 'Allocated Budget',
+          areaStyle: {
+            //设置区域背景颜色透明度
+            normal: {
+              width: 1,
+              opacity: 0.8
             }
-          ]
+          }
         }
       ]
     }
-    onMounted(() => {
-      // 获取挂载的组件实例
-      const echarts = proxy.$echarts
-      //初始化挂载
-      const echarts1 = echarts.init(document.getElementById('myChart'))
-      //添加配置
-      echarts1.setOption(option)
-      // 自适应
-      window.onresize = function () {
-        echarts1.resize()
-      }
-    })
-    return {}
+  ]
+}
+onMounted(() => {
+  const echarts = proxy.$echarts
+  const myChart = echarts.init(chartDom.value)
+  myChart.setOption(option)
+  window.onresize = () => {
+    myChart.resize()
   }
+  watch(
+    () => props.indicator,
+    () => {
+      myChart.resize()
+    },
+    {
+      deep: true
+    }
+  )
 })
 </script>

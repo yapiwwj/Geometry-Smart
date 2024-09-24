@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import Pie from '@/views/teacher/components/Pie.vue'
+import { useEchartsStore } from '@/stores'
+import { storeToRefs } from 'pinia'
+import { ElMessageBox } from 'element-plus'
 
+const echartsStore = useEchartsStore()
+const { examIndicatorList } = storeToRefs(echartsStore)
 const setButtonList = ref([
   { id: 0, name: '知识点检测', type: '' },
   { id: 1, name: '章节复习', type: '' },
@@ -40,6 +45,7 @@ interface IndicatorItem {
   name: string
   max: number
 }
+
 const indicator = ref<IndicatorItem[]>([])
 const selectFillButton = (index: number) => {
   const button = fillButtonList.value[index]
@@ -52,8 +58,20 @@ const selectFillButton = (index: number) => {
   } else if (!button.selected && existsInIndicator) {
     indicator.value = indicator.value.filter((item) => item.name !== button.name)
   }
-  console.log(indicator.value)
+  echartsStore.handleExamIndicatorList(indicator.value)
 }
+
+const dialogVisible = ref(false)
+const publish = () => {
+  dialogVisible.value = true
+
+  setButtonList.value.forEach((item) => (item.type = ''))
+  demonstration.value = 0
+  demonstration2.value = 0
+  fillButtonList.value.forEach((item) => (item.type = ''))
+}
+
+onMounted(() => {})
 </script>
 <template>
   <div class="container">
@@ -105,12 +123,24 @@ const selectFillButton = (index: number) => {
             </el-button>
           </div>
           <div class="fill-item-right">
-            <Pie />
+            <Pie :indicator="indicator" />
           </div>
         </section>
       </li>
+      <li class="submit" style="display: flex; justify-content: end">
+        <el-button type="primary" plain @click="publish">发布</el-button>
+      </li>
     </ul>
   </div>
+
+  <el-dialog v-model="dialogVisible" title="Tips" width="500">
+    <span>组卷完成，试卷已下发至学生端。</span>
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false"> 确认 </el-button>
+      </div>
+    </template>
+  </el-dialog>
 </template>
 
 <style scoped lang="scss">

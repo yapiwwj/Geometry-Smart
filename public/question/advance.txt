@@ -1,0 +1,262 @@
+1.
+  <div>
+    <p>&emsp;&emsp;如图已知正方体ABCD-A₁B₁C₁D₁,M、N分别是A₁D,D₁B的中点，则</p>
+    <div style="width: 600px; display: flex; justify-content: space-between; align-items: center">
+      <img src="/question/advance1.png" alt="" style="width: 200px" />
+      <ul style="list-style: none">
+        <li style="margin: 5px 0">
+          <input type="radio" name="1" />
+          <label>A. 直线A₁D与直线D₁B垂直，直线MN//平面ABCD</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="1" />
+          <label>B. 直线A₁D与直线D₁B平行，直线MN⊥平面BDD₁B₁</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="1" />
+          <label>C. 直线A₁D与直线D₁B相交，直线MN//平面ABCD</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="1" />
+          <label>A. 直线A₁D与直线D₁异面，直线MN⊥平面BDD₁B₁</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+2.
+  <div>
+    <p>&emsp;&emsp;设直线l,m和平面α，β，下列条件能得到α//β的有:</p>
+    <p>&emsp;&emsp;①l⊂α，m⊂α，且l//β，m//β;</p>
+    <p>&emsp;&emsp;②l⊂α，m⊂α，且l//m;</p>
+    <p>&emsp;&emsp;③l//α，m//β，且l//m.</p>
+    <div style="width: 600px; display: flex; justify-content: space-between; align-items: center">
+      <!--      <img src="/question/advance1.png" alt="" style="width: 200px" />-->
+      <ul style="list-style: none;display: flex;margin: 10px 0">
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="2" />
+          <label>A. 1个</label>
+        </li>
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="2" />
+          <label>B. 2个</label>
+        </li>
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="2" />
+          <label>C. 3个</label>
+        </li>
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="2" />
+          <label>A. 4个</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+3.
+  <div>
+    <p>&emsp;&emsp;如图，在四面体A-BCD中，AB⊥面BCD，BC⊥CD，若AB=BC=CD=1,则AD=</p>
+    <div style="width: 300px; display: flex; justify-content: space-between; align-items: center">
+      <img src="/question/advance3.png" alt="" style="width: 200px" />
+      <ul style="list-style: none">
+        <li style="margin: 5px 0">
+          <input type="radio" name="3" />
+          <label>A. 1</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="3" />
+          <label>B. √2</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="3" />
+          <label>C. √3</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="3" />
+          <label>A. 2</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+4.
+  <div>
+    <p>&emsp;&emsp;如图，将边长为1的正方形ABCD，沿对角线BD折起，使面ABD⊥面C'BD，则AC'的值为</p>
+    <div style="width: 300px; display: flex; justify-content: space-between; align-items: center">
+      <img src="/question/advance4.png" alt="" style="width: 200px" />
+      <ul style="list-style: none">
+        <li style="margin: 5px 0">
+          <input type="radio" name="4" />
+          <label>A. 1</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="4" />
+          <label>B. 1/2</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="4" />
+          <label>C. √2</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="4" />
+          <label>A. √2/2</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+5.
+  <div>
+    <p>&emsp;&emsp;如图，在正方体ABCD-A₁B₁C₁D₁中，棱长为a，M、N分别为A₁B和AC上的点，A₁M=AN=√2a/3，则MN与面BB₁C₁C的位置关系是？</p>
+    <div style="width: 300px; display: flex; justify-content: space-between; align-items: center">
+      <img src="/question/advance5.png" alt="" style="width: 200px" />
+      <ul style="list-style: none">
+        <li style="margin: 5px 0">
+          <input type="radio" name="5" />
+          <label>A. 相交</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="5" />
+          <label>B. 平行</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="5" />
+          <label>C. 垂直</label>
+        </li>
+        <li style="margin: 5px 0">
+          <input type="radio" name="5" />
+          <label>A. 不能确定</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+6.
+  <div>
+    <p>&emsp;&emsp;在棱长为2的正方体ABCD-A₁B₁C₁D₁中，O是底面ABCD的中心，E、F分别是CC₁、AD的中点，那么异面直线OE和FD₁所成的角的余弦值等于？</p>
+    <div style="width: 600px; display: flex; justify-content: space-between; align-items: center">
+      <!--      <img src="/question/advance1.png" alt="" style="width: 200px" />-->
+      <ul style="list-style: none;display: flex;margin: 10px 0">
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="6" />
+          <label>A. √10/5</label>
+        </li>
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="6" />
+          <label>B. 2/3</label>
+        </li>
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="6" />
+          <label>C. √5/5</label>
+        </li>
+        <li style="margin: 5px 0">
+          &emsp;&emsp;<input type="radio" name="6" />
+          <label>A. √15/5</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+7.
+  <div style="display: flex">
+    <p>&emsp;&emsp;在正方体ABCD-A₁B₁C₁D₁中，M、N分别为棱AA₁和BB₁的中点，则sin(CM,D₁N)的值为</p>
+    <input type="text" style="margin: 0 10px;border: none;border-bottom: 1px solid #000">。
+  </div>
+
+
+8.
+<div>
+  <div style="display: flex">
+    <p>&emsp;&emsp;如图，正方体的棱长为1，C、D分别是两条棱的中点，A、B、M是顶点，那么M到截面ABCD的距离是</p>
+    <input type="text" style="margin: 0 10px;border: none;border-bottom: 1px solid #000">。
+  </div>
+  <div>
+   &emsp; &emsp;<img src="/question/advance8.png" alt="">
+  </div>
+</div>
+
+
+9.
+  <div style="display: flex">
+    <p>&emsp;&emsp;正四棱锥P-ABCD的所有棱长都相等，E为PC中点，则直线AC与截面BDE所成的角为</p>
+    <input type="text" style="margin: 0 10px;border: none;border-bottom: 1px solid #000">。
+  </div>
+
+
+10.
+  <div style="display: flex">
+    <p>&emsp;&emsp;已知正三棱柱ABC-A₁B₁C₁的所有棱长都相等，D是A₁C₁中点，则直线AD与面B₁DC所成角的正弦值为</p>
+    <input type="text" style="margin: 0 10px;border: none;border-bottom: 1px solid #000">。
+  </div>
+
+
+11.
+  <div style="display: flex">
+    <p>&emsp;&emsp;已知边长为4√2的正三角形ABC中，E、F分别为BC和AC的中点，PA⊥面ABC，且PA=2，设平面α过PF且与AE平行，则AE与面α的距离为</p>
+    <input type="text" style="margin: 0 10px;border: none;border-bottom: 1px solid #000">。
+  </div>
+
+
+12.
+  <div style="display: flex">
+    <p>&emsp;&emsp;棱长都为2的直平面六面体ABCD-A₁B₁C₁D₁中，∠BAD=60°，则对角线A₁C与侧面DCC₁D₁所成角的余弦值为</p>
+    <input type="text" style="margin: 0 10px;border: none;border-bottom: 1px solid #000">。
+  </div>
+
+
+13.
+  <div>
+    <p>&emsp;&emsp;棱长都为2的直平面六面体ABCD-A₁B₁C₁D₁中，∠BAD=60°，则对角线A₁C与侧面DCC₁D₁所成角的余弦值为</p>
+    <ul style="list-style: none;display: flex">
+      &emsp;&emsp;<li>
+      <p>如图，直三棱柱ABC-A₁B₁C₁，底面△ABC中，CA=CB=1，∠BCA=90°，棱AA₁=2，M、N分别A₁B₁、A₁A的中点.</p>
+      <p>(1) 求BM的长;</p>
+      <p>(2) 求cos(BA₁,CB₁)的值;</p>
+      <p>(3) 求证：A₁B⊥C₁N;</p>
+    </li>
+      <li>
+        <img src="/question/advance13.png" alt="" style="width: 200px">
+      </li>
+    </ul>
+
+    <div>
+      &emsp;&emsp;<textarea placeholder="请输入答案" style="width: 500px;height: 200px"></textarea>
+    </div>
+  </div>
+
+14.
+  <div>
+    <ul style="list-style: none;display: flex"> &emsp;&emsp;<li><p>
+      如图，三棱锥P-ABC中，PC⊥面ABC，PC=AC=2，AB=BC，D是PB上一点，且CD⊥面PAB.</p>
+      <p>(1) 求证：AB⊥面PCB;</p>
+      <p>(2) 求异面直线AP与BC所成角的大小;</p>
+      <p>(3) 求二面角C-PA-B的大小的余弦值.</p></li>
+      <li><img src="/question/advance14.png" alt="" style="width: 200px"></li>
+    </ul>
+    <div>
+      &emsp;&emsp;<textarea placeholder="请输入答案" style="width: 500px;height: 200px"></textarea>
+    </div>
+  </div>
+
+
+15.
+  <div>
+    <ul style="list-style: none;display: flex">
+      &emsp;&emsp;<li>
+      <p>如图四棱锥P-ABCD中，低面ABCD是平行四边形，PG⊥面ABCD，垂足为G，G在AD上，且PG=4，AG=1/3GD，BG⊥GC，GB=GC=2，E是BC的中点.</p>
+      <p>(1) 求异面直线GE与PC所成的角的余弦值；</p>
+      <p>(2) 求点D到平面PBG的距离;</p>
+      <p>(3) 若F是棱PC上的一点，且DF⊥GC，求PF/FC的值.</p>
+    </li>
+      <li>
+        <img src="/question/advance15.png" alt="" style="width: 200px">
+      </li>
+    </ul>
+    <div>
+      &emsp;&emsp;<textarea placeholder="请输入答案" style="width: 500px;height: 200px"></textarea>
+    </div>
+  </div>
