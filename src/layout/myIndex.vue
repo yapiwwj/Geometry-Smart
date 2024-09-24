@@ -67,7 +67,6 @@ const courseBannerList = ref([
       ></iframe> -->
     </div>
     <div class="main">
-
       <ul class="images" :style="{ '--quantity': 6 }">
         <li
           v-for="i in courseBannerList"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {onMounted, ref, onBeforeUnmount} from 'vue'
-import {UploadFilled} from '@element-plus/icons-vue'
-import type {UploadFile} from 'element-plus'
+import { onMounted, ref, onBeforeUnmount } from 'vue'
+import { UploadFilled } from '@element-plus/icons-vue'
+import type { UploadFile } from 'element-plus'
 import axios from 'axios'
 
 const imgURL = ref<string>('')
@@ -13,8 +13,8 @@ const loading = ref(false)
 const iframeSrc = ref<string>('')
 
 const handleSuccess = (response: any, UploadFile: UploadFile) => {
-  const {data} = response
-  const {raw} = UploadFile
+  const { data } = response
+  const { raw } = UploadFile
 
   imgURL.value = data
   rawFile.value = raw
@@ -61,8 +61,7 @@ setInterval(() => {
   loading.value = false
 }, 20000)
 
-onMounted(() => {
-})
+onMounted(() => {})
 </script>
 
 <template>
@@ -70,43 +69,43 @@ onMounted(() => {
     <ul>
       <li class="left">
         <el-upload
-            v-if="!imgURL"
-            class="upload-demo"
-            drag
-            action="http://121.40.154.188:10001/courseware/chart/upload"
-            multiple
-            :on-success="handleSuccess"
+          v-if="!imgURL"
+          class="upload-demo"
+          drag
+          action="http://121.40.154.188:10001/courseware/chart/upload"
+          multiple
+          :on-success="handleSuccess"
         >
           <el-icon class="el-icon--upload">
-            <upload-filled/>
+            <upload-filled />
           </el-icon>
           <div class="el-upload__text">将文件拖放到此处 or <em>点击上传</em></div>
           <template #tip>
             <div class="el-upload__tip">小于 500KB 的 JPG/PNG 文件</div>
           </template>
         </el-upload>
-<!--        <el-upload-->
-<!--          v-if="!imgURL"-->
-<!--          class="upload-demo"-->
-<!--          drag-->
-<!--          action="http://localhost:10001/courseware/chart/upload"-->
-<!--          multiple-->
-<!--          :on-success="handleSuccess"-->
-<!--        >-->
-<!--          <el-icon class="el-icon&#45;&#45;upload">-->
-<!--            <upload-filled/>-->
-<!--          </el-icon>-->
-<!--          <div class="el-upload__text">将文件拖放到此处 or <em>点击上传</em></div>-->
-<!--          <template #tip>-->
-<!--            <div class="el-upload__tip">小于 500KB 的 JPG/PNG 文件</div>-->
-<!--          </template>-->
-<!--        </el-upload>-->
-        <img v-if="imgURL" :src="imgURL" alt=""/>
+        <!--        <el-upload-->
+        <!--          v-if="!imgURL"-->
+        <!--          class="upload-demo"-->
+        <!--          drag-->
+        <!--          action="http://localhost:10001/courseware/chart/upload"-->
+        <!--          multiple-->
+        <!--          :on-success="handleSuccess"-->
+        <!--        >-->
+        <!--          <el-icon class="el-icon&#45;&#45;upload">-->
+        <!--            <upload-filled/>-->
+        <!--          </el-icon>-->
+        <!--          <div class="el-upload__text">将文件拖放到此处 or <em>点击上传</em></div>-->
+        <!--          <template #tip>-->
+        <!--            <div class="el-upload__tip">小于 500KB 的 JPG/PNG 文件</div>-->
+        <!--          </template>-->
+        <!--        </el-upload>-->
+        <img v-if="imgURL" :src="imgURL" alt="" />
       </li>
     </ul>
     <div class="progress-container">
       <el-button plain @click="transform" style="border-radius: 16px; margin: 0 5px"
-      >开始转化
+        >开始转化
       </el-button>
     </div>
     <ul>

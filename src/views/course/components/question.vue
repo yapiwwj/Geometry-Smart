@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref,watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { getTestContents, judgeQuestion } from '@/api/course'
 
 const props = defineProps(['id'])
@@ -37,7 +37,6 @@ const getTest = async () => {
     lastSheet.value = JSON.parse(sheet as any)
   }
 }
-
 
 const activeNames = ref([''])
 const handleChange = (val: string[]) => {}
@@ -86,9 +85,12 @@ const submit = async () => {
   lastSheet.value = res.data.judge
   await getTest()
 }
-watch(() => props.id, () => {
-  getTest()
-})
+watch(
+  () => props.id,
+  () => {
+    getTest()
+  }
+)
 
 onMounted(() => {
   getTest()
@@ -109,7 +111,7 @@ onMounted(() => {
               :disabled="doneValue === 1"
               @click="select('A', i.id)"
             /><span>{{ i.A }}</span>
-            <br/>
+            <br />
             <input
               type="radio"
               :name="i.name"
@@ -117,7 +119,7 @@ onMounted(() => {
               :disabled="doneValue === 1"
               @click="select('B', i.id)"
             /><span>{{ i.B }}</span>
-            <br/>
+            <br />
             <input
               type="radio"
               :name="i.name"
@@ -125,7 +127,7 @@ onMounted(() => {
               :disabled="doneValue === 1"
               @click="select('C', i.id)"
             /><span>{{ i.C }}</span>
-            <br/>
+            <br />
             <input
               type="radio"
               :name="i.name"

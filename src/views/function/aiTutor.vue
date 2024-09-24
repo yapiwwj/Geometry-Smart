@@ -44,7 +44,7 @@ const drawer = ref(false)
 const isFrameShow = ref(false)
 
 //
-const clickSend = async (type: string, e: any):Promise<void> => {
+const clickSend = async (type: string, e: any): Promise<void> => {
   if (type === 'simple') {
     isFrameShow.value = false
   } else {
@@ -61,8 +61,7 @@ const clickSend = async (type: string, e: any):Promise<void> => {
   await processStreamedResponse(data)
 }
 
-onMounted(()=>{
-})
+onMounted(() => {})
 </script>
 
 <template>
@@ -92,7 +91,14 @@ onMounted(()=>{
         </el-scrollbar>
         <div class="footer">
           <ul class="top">
-            <li ref="quickQuestionLi" v-for="i in quickQuestion" :key="i.id" @click="clickSend('simple',$event)">{{ i.question }}</li>
+            <li
+              ref="quickQuestionLi"
+              v-for="i in quickQuestion"
+              :key="i.id"
+              @click="clickSend('simple', $event)"
+            >
+              {{ i.question }}
+            </li>
           </ul>
           <ul class="bottom">
             <li>
@@ -123,8 +129,8 @@ onMounted(()=>{
         <p>推荐问题</p>
         <el-scrollbar height="200px">
           <ul class="recommend-question-list">
-            <li ref="recommondLi" v-for="i in recommendQuestionList" :key="i.id" >
-              <span @click="clickSend('difficult',$event)">{{ i.question }}</span>
+            <li ref="recommondLi" v-for="i in recommendQuestionList" :key="i.id">
+              <span @click="clickSend('difficult', $event)">{{ i.question }}</span>
               <div class="typebox">
                 <img src="../../assets/icons/alert.svg" alt="" />
                 <span>近日错题</span>
@@ -135,7 +141,12 @@ onMounted(()=>{
       </li>
       <li class="three-model">
         <p>立体可视化</p>
-        <iframe v-if="isFrameShow" src="/static/model1.html" frameborder="0" scrolling="no"></iframe>
+        <iframe
+          v-if="isFrameShow"
+          src="/static/model1.html"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
         <!-- <iframe
           src="http://121.40.154.188:8080/courseware/img/7b011569-fd03-40e3-8937-5206806cf260.html"
           frameborder="0"

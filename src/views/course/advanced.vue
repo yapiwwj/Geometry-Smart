@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { postExam } from '@/api/course'
+import type { exam_data } from '@/type/course'
 
-const examList = ref([])
+const examList = ref<exam_data>([])
 onMounted(async () => {
   const { data } = await postExam(10)
   examList.value = data
@@ -11,7 +12,7 @@ onMounted(async () => {
 <template>
   <div>
     <ul>
-      <li v-for="(i,index) in examList" :key="i">
+      <li v-for="(i, index) in examList" :key="i.id">
         <div>&emsp;&emsp;{{ `${index + 1}` }}.</div>
         <div v-html="i.content"></div>
       </li>
@@ -21,7 +22,6 @@ onMounted(async () => {
     <el-button type="primary">提交</el-button>
   </div>
 </template>
-
 
 <style scoped lang="scss">
 li {

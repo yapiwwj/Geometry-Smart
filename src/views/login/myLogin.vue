@@ -1,4 +1,4 @@
-<script setup >
+<script setup>
 import LoginSlot from '../../components/loginRegisterSlot.vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -10,22 +10,21 @@ import { h } from 'vue'
 const userStore = useUserStore()
 
 const router = useRouter()
-router.beforeEach((to, from, next)=>{
-  if(to.path==='/login' || to.path==='/register' || to.path==='/homePage'){
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login' || to.path === '/register' || to.path === '/homePage') {
     next()
-  }else{
+  } else {
     const token = localStorage.getItem('token')
-    if(token){
+    if (token) {
       next()
-    }else{
+    } else {
       ElNotification({
         title: 'Title',
-        message: h('i', { style: 'color: #87afff' }, '您还未登录，请先登录！'),
+        message: h('i', { style: 'color: #87afff' }, '您还未登录，请先登录！')
       })
     }
   }
 })
-
 
 const identifyList = ref([
   {

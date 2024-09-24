@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import {useRoute} from "vue-router";
+import { useRoute } from 'vue-router'
 
 import Bar from '../../../../components/teacher/Echarts/bar.vue'
 import Radar from '../../../../components/teacher/Echarts/radar.vue'
 import Line from '../../../../components/teacher/Echarts/line.vue'
 
 const route = useRoute()
-const {id, name} = route.query
+const { id, name } = route.query
 </script>
 
 <template>
-  <h2>{{name}}的AI智能分析</h2>
-  <Bar :userId="id"/>
+  <h2>{{ name }}的AI智能分析</h2>
+  <Bar :userId="id" />
   <div>
-    <Radar :userId="id"/>
-    <Line :userId="id"/>
+    <Radar :userId="id" />
+    <Line :userId="id" />
   </div>
 </template>
 
 <style scoped lang="scss">
-div{
+div {
   display: flex;
 }
 </style>

@@ -7,3 +7,11 @@ export type is_tip_show_arraylist = {
   tipTitle?: string
   tipContent?: string
 }[]
+
+/**
+ * 组卷
+ */
+export type exam_data = {
+  id: number
+  content: string
+}[]

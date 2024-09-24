@@ -8,7 +8,8 @@ import type {
   GetTestContentResponse,
   JudgeData,
   JudgeResponse,
-  GetPdfResponse
+  GetPdfResponse,
+  GetExamResponse
 } from '@/api/course/type.d.ts'
 
 enum API {
@@ -20,7 +21,7 @@ enum API {
   TEST_GET_URL = '/courseware/knowledge/test',
   TEST_JUDGE_GET_URL = '/courseware/knowledge/test/judge',
   PDF_GET_URL = '/courseware/knowledge/img',
-  EXAM_POST_URL = '/courseware/knowledge/random/test',
+  EXAM_POST_URL = '/courseware/knowledge/random/test'
 }
 
 export const getCourseContents = (id: number) =>
@@ -52,4 +53,4 @@ export const getPdf = (id: number) =>
 //   request.post<number, any>(API.EXAM_POST_URL, size)
 
 export const postExam = (data: number) =>
-  request.post<number, any>(`${API.EXAM_POST_URL}?size=${data}`)
+  request.post<number, GetExamResponse>(`${API.EXAM_POST_URL}?size=${data}`)

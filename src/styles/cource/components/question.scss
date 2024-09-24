@@ -1,41 +1,40 @@
-.qusetion-container{
+.qusetion-container {
   width: 90%;
   margin: 20px auto;
-  h3{
+  h3 {
     padding: 10px 0;
     border-top: 1px solid #daecf6;
   }
-  .question-body{
+  .question-body {
     padding: 10px 0;
-    .question{
+    .question {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      .select{
+      .select {
         padding: 10px 0;
-        input{
+        input {
           //accent-color: #409eff;
           margin: 0 5px 10px 20px;
         }
       }
     }
-    .answer{
-      div{
-       .QR{
-        display: flex;
-        align-items: end;
-        margin-top: 20px;
-         img{
-          width: 50px;
+    .answer {
+      div {
+        .QR {
+          display: flex;
+          align-items: end;
+          margin-top: 20px;
+          img {
+            width: 50px;
+          }
         }
-       }
       }
     }
   }
-
 }
-.error{
-  input{
+.error {
+  input {
     accent-color: red;
   }
 }

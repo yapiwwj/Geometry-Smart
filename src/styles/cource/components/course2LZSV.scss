@@ -7,36 +7,36 @@
   width: 100%;
   height: 20vh;
   border: none;
-  .lz{
+  .lz {
     margin: auto;
     position: relative;
     width: 200px;
     height: 300px;
   }
-  .lz::before{
+  .lz::before {
     position: absolute;
-    content: "";
+    content: '';
     width: 0;
     height: 0;
     border-bottom: 200px solid #9dc831;
     border-left: 80px solid transparent;
     border-top: 80px solid transparent;
     transform: skewY(20deg);
-    filter: drop-shadow(3px 3px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
   }
-  .lz::after{
+  .lz::after {
     position: absolute;
-    content: "";
-    left:80px ;
+    content: '';
+    left: 80px;
     width: 0;
     height: 0;
     border-bottom: 200px solid #669300;
     border-right: 80px solid transparent;
     border-top: 80px solid transparent;
     transform: skewY(-20deg);
-    filter: drop-shadow(6px 6px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.5));
   }
-  .lz div{
+  .lz div {
     position: absolute;
     bottom: 7px;
     left: 78px;
@@ -44,11 +44,10 @@
     height: 192px;
     background: #fff;
     z-index: 9;
-    opacity: .3;
+    opacity: 0.3;
     box-shadow: 0px -2px 4px 1px #fff;
   }
 }
-
 
 .slider-demo-block {
   max-width: 400px;

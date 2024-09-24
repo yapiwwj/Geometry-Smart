@@ -73,7 +73,7 @@ interface JudgeData {
   type: number
   sheet: string
   answer: string
-  analysis?: string,
+  analysis?: string
 }
 
 interface Judge_Data {
@@ -89,8 +89,16 @@ interface Judge_Data {
  */
 export type JudgeResponse = ApiResponse<Judge_Data>
 
-
 /**
  * 获取pdf
  */
 export type GetPdfResponse = ApiResponse<string[]>
+
+/**
+ * 获取组卷
+ */
+interface ExamData {
+  id: number
+  content: string
+}
+export type GetExamResponse = ApiResponse<ExamData[]>

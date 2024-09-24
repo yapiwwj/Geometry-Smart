@@ -48,7 +48,7 @@ const toContent = (url: string, id: number) => {
             <span>在线课堂</span>
           </li>
           <li
-          class="onlineClass"
+            class="onlineClass"
             @click="handle(7)"
             :style="{ background: activeId === 7 ? '#daecf6' : '' }"
           >

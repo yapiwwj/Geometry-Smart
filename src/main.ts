@@ -8,7 +8,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import '@/styles/index.scss'
 import 'virtual:svg-icons-register'
 import globalComponent from '@/components/index'
-import * as echarts from "echarts";
+import * as echarts from 'echarts'
 // import mathjax from '@/utils/mathjax'
 
 const app = createApp(App)

@@ -22,9 +22,21 @@ export const useAIStore = defineStore('AI', () => {
   ])
 
   const recommendQuestionList = ref<recommend_question>([
-    { id: 0, question: '如图，在三棱柱ABC-A₁B₁C₁中，侧棱垂直于底面，AB⊥BC，AA₁=AC=2,E、F分别为A₁C₁、BC的中点。（1）求证：平面ABE⊥平面B₁BC₁C;（2）求证：C₁F∥平面ABE;（3）求三棱锥E-ABC的体积。'},
-    { id: 1, question: '在边长为a的菱形ABCD中，∠ABC=60°，PC⊥面ABCD，E,F是PA和AB的中点。（1）求证：EF∥平面PBC；（2）求E到平面PBC的距离。' },
-    { id: 2, question: '已知如图1,在Rt△ABC中，∠ACB=30°，∠ABC=90°，D为AC中点，AE⊥BD于E，延长AE交BC于F，将△ABD沿BD折起，使平面ABD⊥平面BCD，如图2所示。（1）求证：AE⊥平面BCD;（2）求二面角A-DC-B的余弦值;（3）求三棱锥B-AEF与四棱锥A-FEDC的体积比。' },
+    {
+      id: 0,
+      question:
+        '如图，在三棱柱ABC-A₁B₁C₁中，侧棱垂直于底面，AB⊥BC，AA₁=AC=2,E、F分别为A₁C₁、BC的中点。（1）求证：平面ABE⊥平面B₁BC₁C;（2）求证：C₁F∥平面ABE;（3）求三棱锥E-ABC的体积。'
+    },
+    {
+      id: 1,
+      question:
+        '在边长为a的菱形ABCD中，∠ABC=60°，PC⊥面ABCD，E,F是PA和AB的中点。（1）求证：EF∥平面PBC；（2）求E到平面PBC的距离。'
+    },
+    {
+      id: 2,
+      question:
+        '已知如图1,在Rt△ABC中，∠ACB=30°，∠ABC=90°，D为AC中点，AE⊥BD于E，延长AE交BC于F，将△ABD沿BD折起，使平面ABD⊥平面BCD，如图2所示。（1）求证：AE⊥平面BCD;（2）求二面角A-DC-B的余弦值;（3）求三棱锥B-AEF与四棱锥A-FEDC的体积比。'
+    }
   ])
   const handleAddMessage = (type: string, text: string) => {
     dialogList.push({ id: dialogList.length, type, text })

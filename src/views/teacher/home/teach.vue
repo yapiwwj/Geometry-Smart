@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, defineAsyncComponent, onMounted } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
-import {getPDFResponse} from '@/api/teacher'
+import { getPDFResponse } from '@/api/teacher'
 
 const activeName = ref('first')
 
@@ -22,9 +22,8 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 
 const pdfPath = ref('')
 const getPDF = async () => {
-  const {data} = await getPDFResponse(activeIndex.value)
+  const { data } = await getPDFResponse(activeIndex.value)
   pdfPath.value = data
-
 }
 
 const jiaohuComponents = ref([
@@ -35,22 +34,23 @@ const jiaohuComponents = ref([
       defineAsyncComponent(() => import('../../course/components/course1Cube.vue'))
     ]
   },
-  { id: 1, components: [
-    defineAsyncComponent(() => import('../../course/components/course2SV.vue')),
+  {
+    id: 1,
+    components: [
+      defineAsyncComponent(() => import('../../course/components/course2SV.vue')),
       defineAsyncComponent(() => import('../../course/components/course2YZSV.vue'))
-    ] },
+    ]
+  },
   { id: 2, components: [] },
   {
     id: 3,
-    components: [
-      defineAsyncComponent(() => import('../../course/components/course4Angle.vue'))
-    ]
+    components: [defineAsyncComponent(() => import('../../course/components/course4Angle.vue'))]
   },
   { id: 4, components: [] },
   { id: 5, components: [] }
 ])
 
-onMounted(async ()=>{
+onMounted(async () => {
   await getPDF()
 })
 </script>
@@ -58,14 +58,20 @@ onMounted(async ()=>{
 <template>
   <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
     <el-tab-pane v-for="item in pdfList" :key="item.id" :label="item.label" :name="item.name">
-<!--      <iframe :src="`/pdf/${item.id + 1}.pdf`" frameborder="0" scrolling="no"></iframe>-->
-     <iframe :src="pdfPath" frameborder="0" scrolling="no"></iframe>
-      <iframe v-if="item.id === 0" src="/static/course1/teacher.html" frameborder="0" scrolling="no" style="margin: 10px 0"></iframe>
+      <!--      <iframe :src="`/pdf/${item.id + 1}.pdf`" frameborder="0" scrolling="no"></iframe>-->
+      <iframe :src="pdfPath" frameborder="0" scrolling="no"></iframe>
+      <iframe
+        v-if="item.id === 0"
+        src="/static/course1/teacher.html"
+        frameborder="0"
+        scrolling="no"
+        style="margin: 10px 0"
+      ></iframe>
     </el-tab-pane>
   </el-tabs>
 
   <ul class="jiaohu-box">
-    <li v-for="(component,index) in jiaohuComponents[activeIndex].components" :key="index">
+    <li v-for="(component, index) in jiaohuComponents[activeIndex].components" :key="index">
       <component :is="component" />
     </li>
   </ul>

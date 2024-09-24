@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick, computed ,watch} from 'vue'
+import { ref, onMounted, nextTick, computed, watch } from 'vue'
 import dragResize from '../../components/dragResize.vue'
 import MathJax from '@/utils/mathjax.ts'
 import { useTipsStore } from '@/stores/index'
@@ -92,7 +92,6 @@ const prevImage = () => {
   }
 }
 
-
 const nextImage = () => {
   if (currentIndex.value < images.value.length - 1) {
     currentIndex.value++
@@ -100,7 +99,9 @@ const nextImage = () => {
 }
 
 const loadCourseData = async () => {
-  const { data: { content, init } } = await getCourseContents(contentId.value)
+  const {
+    data: { content, init }
+  } = await getCourseContents(contentId.value)
   tipsStore.handleContent(content, init)
 
   const pdfResponse = await getPdf(contentId.value)
@@ -119,11 +120,14 @@ const { content, isTipShowArrayList } = storeToRefs(tipsStore)
 const route = useRoute()
 
 const contentId = ref(route.query.id)
-watch(() => route.query.id, (newId) => {
-  contentId.value = newId
-  console.log('Updated contentId:', contentId.value)
-  loadCourseData() // 每次 contentId 更新时重新加载数据
-})
+watch(
+  () => route.query.id,
+  (newId) => {
+    contentId.value = newId
+    console.log('Updated contentId:', contentId.value)
+    loadCourseData() // 每次 contentId 更新时重新加载数据
+  }
+)
 
 const popTip = async (e) => {
   const target = e.target
@@ -159,7 +163,6 @@ onMounted(() => {
   loadCourseData()
 })
 </script>
-
 
 <style lang="scss" scoped>
 @import url('../../styles/cource/course1.scss');

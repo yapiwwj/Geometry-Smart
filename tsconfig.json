@@ -3,14 +3,13 @@
   "references": [
     {
       "path": "./tsconfig.node.json",
-//      "noImplicitAny": false,
+      //      "noImplicitAny": false,
       "allowJs": true
     },
     {
       "path": "./tsconfig.app.json",
-//      "noImplicitAny": false,
+      //      "noImplicitAny": false,
       "allowJs": true
-    },
-
-  ],
+    }
+  ]
 }

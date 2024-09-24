@@ -11,8 +11,8 @@
     <h4>各类型几何体的3D集成区</h4>
     <span>(Tip:鼠标左键右键均可拖动)</span>
   </header>
-    <div ref="container" class="container" style="display: flex; width: 98%; height: 40vw"></div>
-  <div style="display: flex; justify-content: flex-end;width: 98%;">
+  <div ref="container" class="container" style="display: flex; width: 98%; height: 40vw"></div>
+  <div style="display: flex; justify-content: flex-end; width: 98%">
     <el-button @click="addBox">添加立方体</el-button>
     <el-button type="primary" @click="addCone">添加锥体</el-button>
     <el-button type="success" @click="addCylinder">添加圆柱体</el-button>
