@@ -91,6 +91,8 @@ const prevImage = () => {
     currentIndex.value--
   }
 }
+
+
 const nextImage = () => {
   if (currentIndex.value < images.value.length - 1) {
     currentIndex.value++
